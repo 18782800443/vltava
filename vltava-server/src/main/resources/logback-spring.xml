@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+    <define name="INSTANCE_CODE" class="com.dmall.amp.log.logback.InstanceCodePropertyDefiner"/>
+    <springProperty scope="context" name="dmcProjectCode" source="dmall.dmg.projectCode"/>
+    <springProperty scope="context" name="dmcAppCode" source="dmall.dmg.appCode"/>
+    <springProperty scope="context" name="logLevel" source="dmall.logback.level"/>
+    <property name="logPath" value="/web/logs/app/${dmcProjectCode}/${dmcAppCode}/${INSTANCE_CODE}"/>
+    <property name="logPattern" value="[%-5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%C] [%X{tid}] - %m%n"/>
+    <property name="defaultPattern" value="%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n"/>
+    <property name="charSet" value="UTF-8"/>
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+             <level>ERROR</level>
+         </filter>-->
+        <encoder>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!--输出到文件-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPath}/vltava-service.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logPath}/vltava-service.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logPattern}</pattern>
+            <charset>${charSet}</charset>
+        </encoder>
+    </appender>
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPath}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logPath}/error.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${logPattern}</pattern>
+            <charset>${charSet}</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+    </appender>
+    <!-- logback为java中的包 -->
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="org.apache.zookeeper" level="ERROR"/>
+    <logger name="org.mybatis.spring" level="ERROR"/>
+    <logger name="com.dmall.monitor" level="ERROR"/>
+    <logger name="com.dmall.tool" level="${logLevel}" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>
+    <root level="info">
+        <appender-ref ref="ERROR_FILE"/>
+    </root>
+</configuration>

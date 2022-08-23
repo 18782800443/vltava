@@ -27,9 +27,9 @@ spring:
     host: 10.38.224.35
     port: 7152
     password: ""
-
-logging:
-  config: classpath:logback-spring-test.xml
+#
+#logging:
+#  config: classpath:logback-spring-test.xml
 
 pagehelper:
   default-count: true
@@ -55,3 +55,8 @@ dmall:
     appKey: 6458F188373112895C75190298FEE915EFE45BC37EB7600499974B13A1F60A7C
     secretKey: 147748f18e0193bb70bb5d12
     serverHttpAddress: meta.admiral.dmall.com
+  logback:
+    level: debug
+    devMode: true
+    log:
+      serverAddres: http://10.248.8.12:8567
