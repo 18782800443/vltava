@@ -37,31 +37,31 @@
     </bean>
 
 
-    <!--    &lt;!&ndash;    rocket 消费者&ndash;&gt;-->
-    <!--    <bean id="rocketMessageHandler" class="com.dmall.tool.smstools.mq.RocketMessageHandlerImpl"/>-->
-    <!--    <bean id="rocketConsumer" class="com.dmall.dmg.sdk4.rocketmq.consumer.CoreRocketConsumerImpl"-->
-    <!--          depends-on="monitorConfig" init-method="start">-->
-    <!--        <property name="authInfo" ref="authInfo"/>-->
-    <!--        <property name="topic" value="${dmall.mq.topic.updateDriverItinerary}"/>-->
-    <!--        <property name="group" value="${dmall.mq.group}"/>-->
-    <!--        <property name="messageHandler" ref="rocketMessageHandler"/>-->
-    <!--        &lt;!&ndash; 可以不填! 默认* &ndash;&gt;-->
-    <!--        <property name="tags" value="*"/>-->
-    <!--        &lt;!&ndash; 可以不填! 默认如下 &ndash;&gt;-->
-    <!--        &lt;!&ndash; 更多属性配置，请参考：WIKI：http://wiki.dmall.com:8090/pages/viewpage.action?pageId=18404458 &ndash;&gt;-->
-    <!--        <property name="props">-->
-    <!--            <props>-->
-    <!--                <prop key="maxReconsumeTimes">5</prop> &lt;!&ndash; 重试消费次数，最大16 &ndash;&gt;-->
-    <!--                <prop key="consumeFromWhere">CONSUME_FROM_LAST_OFFSET</prop> &lt;!&ndash; (CONSUME_FROM_LAST_OFFSET,CONSUME_FROM_FIRST_OFFSET,CONSUME_FROM_TIMESTAMP)之一 &ndash;&gt;-->
-    <!--                <prop key="consumeTimestamp"></prop> &lt;!&ndash; 当'consumeFromWhere'为'CONSUME_FROM_TIMESTAMP'时，需要指定时间戳信息，格式：yyyyMMddHHmmss &ndash;&gt;-->
-    <!--                <prop key="consumeThreadMin">5</prop>-->
-    <!--                <prop key="consumeThreadMax">5</prop>-->
-    <!--                &lt;!&ndash;从哪里开始消费,&ndash;&gt;-->
-    <!--                &lt;!&ndash;默认 CONSUME_FROM_LAST_OFFSET 从最新的消息开始消费。&ndash;&gt;-->
-    <!--                &lt;!&ndash;CONSUME_FROM_FIRST_OFFSET 从磁盘上（超过7天的消息会被删）的第一条消息开始消费&ndash;&gt;-->
-    <!--                <prop key="consumeFromWhere">CONSUME_FROM_LAST_OFFSET</prop>-->
-    <!--            </props>-->
-    <!--        </property>-->
-    <!--    </bean>-->
+        <!--    rocket 消费者-->
+        <bean id="rocketMessageHandler" class="com.dmall.vltava.controller.MQConsumer"/>
+        <bean id="rocketConsumer" class="com.dmall.dmg.sdk4.rocketmq.consumer.CoreRocketConsumerImpl"
+              depends-on="monitorConfig" init-method="start">
+            <property name="authInfo" ref="authInfo"/>
+            <property name="topic" value="${dmall.mq.topic.rkt-vltava-req-test}"/>
+            <property name="group" value="${dmall.mq.group}"/>
+            <property name="messageHandler" ref="rocketMessageHandler"/>
+            <!-- 可以不填! 默认* -->
+            <property name="tags" value="*"/>
+            <!-- 可以不填! 默认如下 -->
+            <!-- 更多属性配置，请参考：WIKI：http://wiki.dmall.com:8090/pages/viewpage.action?pageId=18404458 -->
+            <property name="props">
+                <props>
+                    <prop key="maxReconsumeTimes">5</prop> <!-- 重试消费次数，最大16 -->
+                    <prop key="consumeFromWhere">CONSUME_FROM_LAST_OFFSET</prop> <!-- (CONSUME_FROM_LAST_OFFSET,CONSUME_FROM_FIRST_OFFSET,CONSUME_FROM_TIMESTAMP)之一 -->
+                    <prop key="consumeTimestamp"></prop> <!-- 当'consumeFromWhere'为'CONSUME_FROM_TIMESTAMP'时，需要指定时间戳信息，格式：yyyyMMddHHmmss -->
+                    <prop key="consumeThreadMin">5</prop>
+                    <prop key="consumeThreadMax">5</prop>
+                    <!--从哪里开始消费,-->
+                    <!--默认 CONSUME_FROM_LAST_OFFSET 从最新的消息开始消费。-->
+                    <!--CONSUME_FROM_FIRST_OFFSET 从磁盘上（超过7天的消息会被删）的第一条消息开始消费-->
+                    <prop key="consumeFromWhere">CONSUME_FROM_LAST_OFFSET</prop>
+                </props>
+            </property>
+        </bean>
 
 </beans>
