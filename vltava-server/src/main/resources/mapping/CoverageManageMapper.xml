@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dmall.vltava.dao.CoverageManageMapper">
+  <resultMap id="BaseResultMap" type="com.dmall.vltava.domain.coverage.CoverageManage">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="task_name" jdbcType="VARCHAR" property="taskName" />
+    <result column="file_filters" jdbcType="VARCHAR" property="fileFilters" />
+    <result column="msg_filters" jdbcType="VARCHAR" property="msgFilters" />
+    <result column="task_status" jdbcType="INTEGER" property="taskStatus" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="yn" jdbcType="TINYINT" property="yn" />
+  </resultMap>
+</mapper>

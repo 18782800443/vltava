@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat" >
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.dmall.vltava.utils.MyMapper"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://db.mysql.test.dmall.com:13306/dmall_test_vltava"
+                        userId="wumart"
+                        password="!QAZxsw2">
+        </jdbcConnection>
+
+        <!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://10.248.224.3:11103/dmall_test"-->
+                        <!--userId="vendor_joint"-->
+                        <!--password="30Ykrq!9sSM1X14">-->
+        <!--</jdbcConnection>-->
+
+        <!-- 对于生成的pojo所在包 -->
+        <javaModelGenerator targetPackage="com.dmall.vltava.domain" targetProject="vltava-domain/src/main/java"/>
+
+		<!-- 对于生成的mapper所在目录 -->
+        <sqlMapGenerator targetPackage="mapping" targetProject="vltava-server/src/main/resources"/>
+
+		<!-- 配置mapper对应的java映射 -->
+        <javaClientGenerator targetPackage="com.dmall.vltava.dao" targetProject="vltava-server/src/main/java"
+                             type="XMLMAPPER"/>
+
+        <!--用完记得注释掉，不然会重复生成mapper数据 -->
+        <!--<table tableName="app_manage"></table>-->
+<!--        <table tableName="coverage_manage"></table>-->
+<!--        <table tableName="mock_manage"></table>-->
+<!--        <table tableName="docker_manage"></table>-->
+
+		 
+    </context>
+</generatorConfiguration>

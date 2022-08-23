@@ -1,0 +1,53 @@
+dubbo:
+  registry:
+    address: zookeeper://testzk1.dmall.com:2181?backup=testzk2.dmall.com:2181,testzk3.dmall.com:2181,testzk4.dmall.com:2181,testzk5.dmall.com:2181
+  application:
+    name: vltava-api
+    owner: liruohao
+  protocol:
+    name: dubbo
+    port: 20880
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vltava
+  datasource:
+    #test
+    url: jdbc:mysql://db.mysql.test.dmall.com:13306/dmall_test_vltava?characterEncoding=utf8&serverTimezone=GMT%2b8
+    username: wumart
+    password: "!QAZxsw2"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    time-zone: GMT+8
+
+  redis:
+    host: db.redis.test.dmall.com
+    port: 6378
+    password: ""
+
+logging:
+  config: classpath:logback-spring-test.xml
+
+pagehelper:
+  default-count: true
+  helper-dialect: mysql
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.dmall.vltava.domain
+  configuration:
+    map-underscore-to-camel-case: true
+mapper:
+  mappers: com.dmall.vltava.utils.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+dmall:
+  dmc:
+    projectCode: vltava-service
+    appCode: vltava-service
+
+
