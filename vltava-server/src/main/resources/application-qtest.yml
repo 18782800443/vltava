@@ -1,9 +1,9 @@
 dubbo:
   registry:
-    address: zookeeper://testzk1.dmall.com:2181?backup=testzk2.dmall.com:2181,testzk3.dmall.com:2181,testzk4.dmall.com:2181,testzk5.dmall.com:2181
+    address: ${__infra.dsf.registry.addr}
   application:
-    name: vltava-api
-    owner: liruohao
+    name: ${__mid.app.code}
+    owner: wei.zhu
   protocol:
     name: dubbo
     port: 20880
@@ -16,16 +16,16 @@ spring:
     name: vltava
   datasource:
     #test
-    url: jdbc:mysql://db.mysql.test.dmall.com:13306/dmall_test_vltava?characterEncoding=utf8&serverTimezone=GMT%2b8
-    username: wumart
-    password: "!QAZxsw2"
+    url: jdbc:mysql://${db.mysql.vlatava_agent_tool.rw.host}:${db.mysql.vlatava_agent_tool.rw.port}/vlatava_agent_tool?serverTimezone=CTT&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true&connectTimeout=2000
+    username: ${db.mysql.vlatava_agent_tool.rw.user}
+    password: ${db.mysql.vlatava_agent_tool.rw.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jackson:
     time-zone: GMT+8
 
   redis:
-    host: db.redis.test.dmall.com
-    port: 6378
+    host: 10.38.224.35
+    port: 7152
     password: ""
 
 logging:
@@ -47,7 +47,11 @@ mapper:
 
 dmall:
   dmc:
-    projectCode: vltava-service
-    appCode: vltava-service
-
-
+    projectCode: SupplyChainTool
+    appCode: vlatava-tool
+  admiral:
+    enabled: true
+    appName: supply-chain-tool-r-t-a-vlatava
+    appKey: 6458F188373112895C75190298FEE915EFE45BC37EB7600499974B13A1F60A7C
+    secretKey: 147748f18e0193bb70bb5d12
+    serverHttpAddress: meta.admiral.dmall.com
