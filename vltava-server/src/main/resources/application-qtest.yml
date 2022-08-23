@@ -47,7 +47,7 @@ mapper:
 
 dmall:
   dmc:
-    projectCode: SupplyChainTool
+    projectCode: SupplyChainTool-RTA
     appCode: vlatava-tool
   admiral:
     enabled: true
@@ -65,8 +65,8 @@ dmall:
       rkt-vltava-req-test: rkt_vltava_req_test
     group: group_vlatava_agent_tool
   dmg:
-    projectCode: SupplyChainTool
+    projectCode: SupplyChainTool-RTA
     appCode: vlatava-tool
     dmcServerAddress: ${__infra.dmc.server.addr}
-    secretKey: e56d6dcb-1176-4ce6-84d5-dcccf268d630
+    secretKey: 04B70D72-842F-47BC-AB74-F3F9DC5F7C07
     serverAddress: ${__infra.dmg.server.addr}
