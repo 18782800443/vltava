@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="logLevel" value="INFO"/>
+    <property name="logDevMode" value="true"/>
+    <property name="maxHistory" value="7"/>
+    <property name="charSet" value="UTF-8"/>
+    <property name="outPatternJson" value=" %m%n"/>
+    <property name="outPattern" value="[%-5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%c] [%X{tid}] - %m%n"/>
+    <property name="localDateTime" value="%d{yyyy-MM-dd}"/>
+    <define name="INSTANCE_CODE" class="com.dmall.amp.log.logback.InstanceCodePropertyDefiner"/>
+
+    <springProperty scope="context" name="log.additivity" source="log.additivity"/>
+    <springProperty scope="context" name="log.sql.level" source="log.sql.level"/>
+    <springProperty scope="context" name="log.web.level" source="log.web.level"/>
+    <springProperty scope="context" name="log.devModel" source="log.devModel"/>
+
+    <property name="logPath" value="/web/logs/app/${AMP_PRO_CODE}/${AMP_APP_CODE}/${INSTANCE_CODE}"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${outPattern}</pattern>
+        </encoder>
+    </appender>
+    <root level="${log.web.level}">
+        <if condition='"${log.devModel}".equals("true")'>
+            <then>
+                <appender-ref ref="CONSOLE"/>
+            </then>
+        </if>
+    </root>
+
+</configuration>
