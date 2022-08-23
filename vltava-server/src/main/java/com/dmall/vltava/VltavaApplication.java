@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @MapperScan("com.dmall.vltava.mapper")
 @EnableDubbo(scanBasePackages = {"com.dmall.vltava.service.remote"})
+@ImportResource(value = {"classpath:config/dmall-dafka.xml"})
 @Import(AdmiralSpringbootConfigurationInitializer.class)
 public class VltavaApplication {
 

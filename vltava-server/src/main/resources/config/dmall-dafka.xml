@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+    <bean id="monitorConfig" class="com.dmall.monitor.sdk.MonitorConfig" init-method="monitorInit">
+        <constructor-arg name="projectCode" value="${dmall.dmg.projectCode}"/>
+        <constructor-arg name="appCode" value="${dmall.dmg.appCode}"/>
+        <constructor-arg name="dmcServerAddress" value="${dmall.dmg.dmcServerAddress}"/>
+        <constructor-arg name="startupMonitor" value="true"/>
+    </bean>
+
+
+    <bean id="authInfo" class="com.dmall.dmg.sdk4.comm.auth.AuthInfo">
+        <constructor-arg name="secretKey" value="${dmall.dmg.secretKey}"/>
+        <constructor-arg name="serverAddr" value="${dmall.dmg.serverAddress}"/>
+        <constructor-arg name="authTimeout" value="5000"/>
+    </bean>
+
+    <!--    rocket生产者-->
+    <bean id="rocketProducer" class="com.dmall.dmg.sdk4.rocketmq.producer.DefRocketProducerWrapper"
+          depends-on="monitorConfig" lazy-init="true">
+        <property name="authInfo" ref="authInfo"/>
+        <property name="topics">
+            <set>
+                <value>${dmall.mq.topic.rkt-vltava-req-test}</value>
+            </set>
+        </property>
+        <!-->可以不填<-->
+        <property name="props">
+            <props>
+                <prop key="sendMsgTimeout">3000</prop>
+                <prop key="retryTimesWhenSendFailed">2</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!--    &lt;!&ndash;    rocket 消费者&ndash;&gt;-->
+    <!--    <bean id="rocketMessageHandler" class="com.dmall.tool.smstools.mq.RocketMessageHandlerImpl"/>-->
+    <!--    <bean id="rocketConsumer" class="com.dmall.dmg.sdk4.rocketmq.consumer.CoreRocketConsumerImpl"-->
+    <!--          depends-on="monitorConfig" init-method="start">-->
+    <!--        <property name="authInfo" ref="authInfo"/>-->
+    <!--        <property name="topic" value="${dmall.mq.topic.updateDriverItinerary}"/>-->
+    <!--        <property name="group" value="${dmall.mq.group}"/>-->
+    <!--        <property name="messageHandler" ref="rocketMessageHandler"/>-->
+    <!--        &lt;!&ndash; 可以不填! 默认* &ndash;&gt;-->
+    <!--        <property name="tags" value="*"/>-->
+    <!--        &lt;!&ndash; 可以不填! 默认如下 &ndash;&gt;-->
+    <!--        &lt;!&ndash; 更多属性配置，请参考：WIKI：http://wiki.dmall.com:8090/pages/viewpage.action?pageId=18404458 &ndash;&gt;-->
+    <!--        <property name="props">-->
+    <!--            <props>-->
+    <!--                <prop key="maxReconsumeTimes">5</prop> &lt;!&ndash; 重试消费次数，最大16 &ndash;&gt;-->
+    <!--                <prop key="consumeFromWhere">CONSUME_FROM_LAST_OFFSET</prop> &lt;!&ndash; (CONSUME_FROM_LAST_OFFSET,CONSUME_FROM_FIRST_OFFSET,CONSUME_FROM_TIMESTAMP)之一 &ndash;&gt;-->
+    <!--                <prop key="consumeTimestamp"></prop> &lt;!&ndash; 当'consumeFromWhere'为'CONSUME_FROM_TIMESTAMP'时，需要指定时间戳信息，格式：yyyyMMddHHmmss &ndash;&gt;-->
+    <!--                <prop key="consumeThreadMin">5</prop>-->
+    <!--                <prop key="consumeThreadMax">5</prop>-->
+    <!--                &lt;!&ndash;从哪里开始消费,&ndash;&gt;-->
+    <!--                &lt;!&ndash;默认 CONSUME_FROM_LAST_OFFSET 从最新的消息开始消费。&ndash;&gt;-->
+    <!--                &lt;!&ndash;CONSUME_FROM_FIRST_OFFSET 从磁盘上（超过7天的消息会被删）的第一条消息开始消费&ndash;&gt;-->
+    <!--                <prop key="consumeFromWhere">CONSUME_FROM_LAST_OFFSET</prop>-->
+    <!--            </props>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+</beans>

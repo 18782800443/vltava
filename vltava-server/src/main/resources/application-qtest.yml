@@ -60,3 +60,13 @@ dmall:
     devMode: true
     log:
       serverAddres: http://10.248.8.12:8567
+    mq:
+      topic:
+        rkt-vltava-req-test: rkt_vltava_req_test
+      group: group_vlatava_agent_tool
+    dmg:
+      projectCode: SupplyChainTool
+      appCode: vlatava-tool
+      dmcServerAddress: ${__infra.dmc.server.addr}
+      secretKey: e56d6dcb-1176-4ce6-84d5-dcccf268d630
+      serverAddress: ${__infra.dmg.server.addr}
