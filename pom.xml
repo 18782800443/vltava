@@ -74,13 +74,6 @@
                 <version>3.12.1</version>
             </dependency>
 
-            <!--        多点配置中心-->
-            <dependency>
-                <artifactId>admiral-client-springboot</artifactId>
-                <groupId>com.dmall.admiral</groupId>
-                <version>3.1.2</version>
-            </dependency>
-
             <dependency>
                 <groupId>com.dmall.monitor</groupId>
                 <artifactId>dmc-sdk</artifactId>
