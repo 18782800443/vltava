@@ -231,15 +231,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>rd</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <profiles.active>rd</profiles.active>
-            </properties>
-        </profile>
 
         <profile>
             <id>dev</id>
@@ -251,7 +242,7 @@
         <profile>
             <id>test</id>
             <properties>
-                <profiles.active>test</profiles.active>
+                <profiles.active>qtest</profiles.active>
             </properties>
         </profile>
 
