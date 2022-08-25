@@ -52,6 +52,7 @@ public class MockController {
 
     @PostMapping("/filter")
     CommonResult filter(@RequestBody BaseFilter baseFilter) {
+        logger.info("开始查询！");
         if (baseFilter == null) {
             return CommonResult.fail("数据错误");
         }
