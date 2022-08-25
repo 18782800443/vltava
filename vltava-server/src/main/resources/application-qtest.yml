@@ -52,6 +52,7 @@ dmall:
     appKey: 6458F188373112895C75190298FEE915EFE45BC37EB7600499974B13A1F60A7C
     secretKey: 147748f18e0193bb70bb5d12
     serverHttpAddress: meta.admiral.dmall.com
+    env: test
   logback:
     level: debug
     devMode: true
