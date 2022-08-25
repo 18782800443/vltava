@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ImportResource(value = {"classpath:config/dmall-dafka.xml"})
 @Import(AdmiralSpringbootConfigurationInitializer.class)
 public class VltavaApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(VltavaApplication.class, args);
     }
