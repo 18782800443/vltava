@@ -27,9 +27,6 @@ spring:
     host: 10.38.224.35
     port: 7152
     password: ""
-#
-#logging:
-#  config: classpath:logback-spring-test.xml
 
 pagehelper:
   default-count: true

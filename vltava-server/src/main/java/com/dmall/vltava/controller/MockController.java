@@ -81,6 +81,7 @@ public class MockController {
     @HandleException
     @PostMapping("/save")
     CommonResult save(@RequestBody MockVO mockVO) {
+        logger.info("req is "+mockVO);
         if (mockVO.getAppId() == null){
             return CommonResult.fail("数据错误，必填值不能为空");
         }
