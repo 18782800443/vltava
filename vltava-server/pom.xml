@@ -242,7 +242,7 @@
         <profile>
             <id>test</id>
             <properties>
-                <profiles.active>qtest</profiles.active>
+                <profiles.active>test</profiles.active>
             </properties>
         </profile>
 
