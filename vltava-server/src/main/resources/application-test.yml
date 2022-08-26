@@ -54,7 +54,7 @@ dmall:
     serverHttpAddress: meta.admiral.dmall.com
     env: test
   logback:
-    level: INFO
+    level: debug
     devMode: true
     log:
       serverAddres: http://10.248.8.12:8567

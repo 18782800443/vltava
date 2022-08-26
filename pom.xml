@@ -32,7 +32,6 @@
     <dependencyManagement>
         <dependencies>
 
-
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
@@ -76,10 +75,6 @@
                     <exclusion>
                         <groupId>com.alibaba</groupId>
                         <artifactId>fastjson</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
