@@ -11,9 +11,6 @@
     <property name="charSet" value="UTF-8"/>
     <!--输出到控制台-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-             <level>ERROR</level>
-         </filter>-->
         <encoder>
             <pattern>${logPattern}</pattern>
         </encoder>
