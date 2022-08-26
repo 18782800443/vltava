@@ -180,6 +180,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.dmall.monitor</groupId>
+            <artifactId>dmc-sdk</artifactId>
+            <version>1.1.2-RELEASE</version>
+        </dependency>
+        
+        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
