@@ -64,9 +64,9 @@ public class MockController {
             cls.setActions(null);
             cls.setMockActionList(JSON.parseArray(mockManage.getActions(), MockActionVO.class));
             cls.setAppName(appService.getAppInfo(cls.getAppId()).getAppName());
-            if (cls.hasImplicit()){
+            if (cls.hasImplicit()) {
                 for (MockActionVO mockActionVO : cls.getMockActionList()) {
-                    if (mockActionVO.getEntrance() != null && mockActionVO.getEntrance()){
+                    if (mockActionVO.getEntrance() != null && mockActionVO.getEntrance()) {
                         cls.setEntranceClassName(mockActionVO.getClassName());
                         cls.setEntranceMethodName(mockActionVO.getMethodName());
                     }
@@ -82,16 +82,16 @@ public class MockController {
     @HandleException
     @PostMapping("/save")
     CommonResult save(@RequestBody MockVO mockVO) {
-        logger.info("req is "+mockVO);
-        if (mockVO.getAppId() == null){
+        logger.info("req is {}", mockVO);
+        if (mockVO.getAppId() == null) {
             return CommonResult.fail("数据错误，必填值不能为空");
         }
         if (!mockVO.hasImplicit()) {
-            if (mockVO.getMockActionList().stream().anyMatch(action -> action.getExpectKey() == null && action.getEntrance() != true )) {
+            if (mockVO.getMockActionList().stream().anyMatch(action -> action.getExpectKey() == null && action.getEntrance() != true)) {
                 return CommonResult.fail("数据错误，必填值不能为空");
             }
         } else {
-            if (StringUtils.isEmpty(mockVO.getEntranceClassName()) || StringUtils.isEmpty(mockVO.getEntranceMethodName())){
+            if (StringUtils.isEmpty(mockVO.getEntranceClassName()) || StringUtils.isEmpty(mockVO.getEntranceMethodName())) {
                 return CommonResult.fail("数据错误，必填值不能为空");
             }
         }
@@ -127,10 +127,10 @@ public class MockController {
     @PostMapping("/remove")
     CommonResult remove(@RequestBody Integer mockId) {
         MockVO mockVO = mockManager.getMockVoById(mockId);
-        if (mockVO == null){
+        if (mockVO == null) {
             return CommonResult.fail("id不存在");
         }
-        if (!TaskStatusEnum.END.getKey().equals(mockVO.getTaskStatus())){
+        if (!TaskStatusEnum.END.getKey().equals(mockVO.getTaskStatus())) {
             return CommonResult.fail("当前规则状态不为结束，无法删除");
         }
         return mockManager.remove(mockId) == 1 ? CommonResult.pass("success") : CommonResult.fail("删除失败，请刷新后重试");
