@@ -33,7 +33,6 @@
             </exclusions>
         </dependency>
 
-
         <dependency>
             <groupId>com.dmall</groupId>
             <artifactId>vltava-domain</artifactId>
@@ -142,10 +141,6 @@
             <version>27.0-jre</version>
         </dependency>
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -241,6 +236,9 @@
 
         <profile>
             <id>test</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <profiles.active>test</profiles.active>
             </properties>
