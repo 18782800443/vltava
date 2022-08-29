@@ -75,7 +75,12 @@ public class MQConsumer implements RocketMessageHandler {
             String group = registerVO.getGroup();
             if (Objects.nonNull(systemUniqueName) && Objects.nonNull(zone) && Objects.nonNull(group)) {
                 //通过systemUniqueName查询mock策略
-                List<MockManage> mockManages = mockManageMapper.getMocks(systemUniqueName, zone, group);
+                List<MockManage> mockManages = null;
+                try {
+                    mockManages = mockManageMapper.getMocks(systemUniqueName, zone, group);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 List<MockVO> mockVOS = null;
                 if (Objects.nonNull(mockManages)) {
                     mockManages.stream().map(c -> mockManager.convert(c)).collect(Collectors.toList());
