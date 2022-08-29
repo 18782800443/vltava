@@ -83,7 +83,7 @@ public class MQConsumer implements RocketMessageHandler {
                 }
                 List<MockVO> mockVOS = null;
                 if (Objects.nonNull(mockManages)) {
-                    mockManages.stream().map(c -> mockManager.convert(c)).collect(Collectors.toList());
+                    mockVOS = mockManages.stream().map(c -> mockManager.convert(c)).collect(Collectors.toList());
                 }
                 mockVOS.stream().forEach(mockVO -> mockService.save(mockVO));
             }
