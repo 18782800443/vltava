@@ -14,6 +14,7 @@ import com.dmall.vltava.manager.MockManager;
 import com.dmall.vltava.service.MockService;
 import com.dmall.vltava.service.TraceService;
 import com.dmall.vltava.service.factory.MqStrategyFactory;
+import com.dmall.vltava.utils.HttpUtils;
 import com.dmall.vltava.utils.SpringContextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -85,7 +87,7 @@ public class MQConsumer implements RocketMessageHandler {
                 if (Objects.nonNull(mockManages)) {
                     mockVOS = mockManages.stream().map(c -> mockManager.convert(c)).collect(Collectors.toList());
                 }
-                mockVOS.stream().forEach(mockVO -> mockService.save(mockVO));
+                mockVOS.stream().forEach(mockVO -> HttpUtils.updateData(registerVO, Collections.singletonList(mockVO)));
             }
         }
     }
