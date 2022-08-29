@@ -54,7 +54,7 @@ public interface MockManageMapper extends MyMapper<MockManage> {
     @Update("update mock_manage set yn=0 where id=${id}")
     Integer remove(@Param("id") Integer id);
 
-    @Select("select * from mock_manage a where a.id in (select id from app_manage where system_unique_name=${systemUniqueName} " +
+    @Select("select * from mock_manage as a where a.id in (select id from app_manage where system_unique_name=${systemUniqueName} " +
             "and zone=${zone} and group=${group})")
     List<MockManage> getMocks(@Param("systemUniqueName") String systemUniqueName,
                               @Param("zone") String zone,

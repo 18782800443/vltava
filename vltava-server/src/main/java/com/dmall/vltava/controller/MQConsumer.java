@@ -71,32 +71,32 @@ public class MQConsumer implements RocketMessageHandler {
             }
             RegisterVO registerVO = JSON.parseObject(msg.getMessage(), RegisterVO.class);
             mqStrategyFactory.getMockRegStrategy().register(registerVO);
-            this.mockVoRSend(registerVO);
+            //this.mockVoRSend(registerVO);
         }
     }
-
-    private void mockVoRSend(RegisterVO registerVO) {
-        //每次收到服务端注册或更新app信息的MQ就进行策略重推
-        String systemUniqueName = registerVO.getSystemUniqueName();
-        String zone = registerVO.getZone();
-        String group = registerVO.getGroup();
-        if (Objects.nonNull(systemUniqueName) && Objects.nonNull(zone) && Objects.nonNull(group)) {
-            //通过systemUniqueName查询mock策略
-            List<MockManage> mockManages = null;
-            try {
-                mockManages = mockManageMapper.getMocks(systemUniqueName, zone, group);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            List<MockVO> mockVOS = null;
-            if (Objects.nonNull(mockManages)) {
-                mockVOS = mockManages.stream().map(c -> mockManager.convert(c)).collect(Collectors.toList());
-            }
-            try {
-                mockVOS.stream().forEach(mockVO -> HttpUtils.updateData(registerVO, Collections.singletonList(mockVO)));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//
+//    private void mockVoRSend(RegisterVO registerVO) {
+//        //每次收到服务端注册或更新app信息的MQ就进行策略重推
+//        String systemUniqueName = registerVO.getSystemUniqueName();
+//        String zone = registerVO.getZone();
+//        String group = registerVO.getGroup();
+//        if (Objects.nonNull(systemUniqueName) && Objects.nonNull(zone) && Objects.nonNull(group)) {
+//            //通过systemUniqueName查询mock策略
+//            List<MockManage> mockManages = null;
+//            try {
+//                mockManages = mockManageMapper.getMocks(systemUniqueName, zone, group);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            List<MockVO> mockVOS = null;
+//            if (Objects.nonNull(mockManages)) {
+//                mockVOS = mockManages.stream().map(c -> mockManager.convert(c)).collect(Collectors.toList());
+//            }
+//            try {
+//                mockVOS.stream().forEach(mockVO -> HttpUtils.updateData(registerVO, Collections.singletonList(mockVO)));
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }
