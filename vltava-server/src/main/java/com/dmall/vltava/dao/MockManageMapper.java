@@ -1,5 +1,6 @@
 package com.dmall.vltava.dao;
 
+import com.dmall.vltava.domain.DockerManage;
 import com.dmall.vltava.domain.mock.MockManage;
 import com.dmall.vltava.utils.MyMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -52,5 +53,11 @@ public interface MockManageMapper extends MyMapper<MockManage> {
 
     @Update("update mock_manage set yn=0 where id=${id}")
     Integer remove(@Param("id") Integer id);
+
+    @Select("select * from mock_manage a where a.id in (select id from app_manage where system_unique_name=${systemUniqueName} " +
+            "and zone=${zone} and group=${group})")
+    List<MockManage> getMocks(@Param("systemUniqueName") String systemUniqueName,
+                              @Param("zone") String zone,
+                              @Param("group") String group);
 
 }

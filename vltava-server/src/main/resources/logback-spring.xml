@@ -47,7 +47,7 @@
     <logger name="org.apache.zookeeper" level="ERROR"/>
     <logger name="org.mybatis.spring" level="ERROR"/>
     <logger name="com.dmall.monitor" level="ERROR"/>
-    <logger name="com.dmall.vltava" level="${logLevel}" additivity="false">
+    <logger name="com.dmall.vltava" level="${logLevel}" additivity="false">    <!-- 这里容易写错，请注意！ -->
         <appender-ref ref="FILE"/>
     </logger>
     <root level="info">

@@ -20,5 +20,4 @@ public interface DockerManageMapper extends MyMapper<DockerManage> {
             " on a.system_unique_name = d.system_unique_name and a.zone = d.zone and a.build_group = d.build_group where a.id in" +
             " (select distinct app_id from mock_manage where yn = 1 and task_status != 5)")
     List<DockerManage> getHealth();
-
 }

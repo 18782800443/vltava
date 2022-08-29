@@ -126,7 +126,7 @@ public class MockManager {
         return mockMapper.remove(id);
     }
 
-    private MockVO convert(MockManage mockManage) {
+    public MockVO convert(MockManage mockManage) {
         MockVO cls = JSON.parseObject(JSON.toJSONString(mockManage), MockVO.class);
         if (mockManage.getActions() != null) {
             JSONArray jsonArray = JSON.parseArray(mockManage.getActions());
