@@ -60,7 +60,7 @@ dmall:
       serverAddres: http://10.248.8.12:8567
   mq:
     topic:
-      rkt-vltava-req-test: rkt_vltava_req_test
+      rkt-vltava-req-test: rkt_vltava_req_test_test
     group: group_dmall_fit_vltava
   dmg:
     projectCode: aladdin-FIT
