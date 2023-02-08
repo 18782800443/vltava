@@ -16,9 +16,9 @@ spring:
     name: vltava
   datasource:
     #test
-    url: jdbc:mysql://${db.mysql.vlatava_agent_tool.rw.host}:${db.mysql.vlatava_agent_tool.rw.port}/vlatava_agent_tool?serverTimezone=CTT&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true&connectTimeout=2000
-    username: ${db.mysql.vlatava_agent_tool.rw.user}
-    password: ${db.mysql.vlatava_agent_tool.rw.password}
+    url: jdbc:mysql://${db.mysql.dmall_fit_vltava.rw.host}:${db.mysql.dmall_fit_vltava.rw.port}/vlatava_agent_tool?serverTimezone=CTT&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true&connectTimeout=2000
+    username: ${db.mysql.dmall_fit_vltava.rw.user}
+    password: ${db.mysql.dmall_fit_vltava.rw.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jackson:
     time-zone: GMT+8
@@ -48,9 +48,9 @@ dmall:
     appCode: vlatava-tool
   admiral:
     enabled: true
-    appName: supply-chain-tool-r-t-a-vlatava
-    appKey: 6458F188373112895C75190298FEE915EFE45BC37EB7600499974B13A1F60A7C
-    secretKey: 147748f18e0193bb70bb5d12
+    appName: aladdin-f-i-t-dmall-fit-vltava
+    appKey: aladdin-f-i-t-dmall-fit-vltava
+    secretKey: 4f8049c9bf8baf1c8efeb5cb
     serverHttpAddress: meta.admiral.dmall.com
     env: test
   logback:
@@ -61,10 +61,10 @@ dmall:
   mq:
     topic:
       rkt-vltava-req-test: rkt_vltava_req_test
-    group: group_vlatava_agent_tool
+    group: group_dmall_fit_vltava
   dmg:
-    projectCode: SupplyChainTool-RTA
-    appCode: vlatava-tool
+    projectCode: aladdin-FIT
+    appCode: dmall-fit-vltava
     dmcServerAddress: ${__infra.dmc.server.addr}
-    secretKey: 04B70D72-842F-47BC-AB74-F3F9DC5F7C07
+    secretKey: 5795DBAF-1888-47AA-89B2-CCD224BE65E9
     serverAddress: ${__infra.dmg.server.addr}
