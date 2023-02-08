@@ -24,8 +24,8 @@ spring:
     time-zone: GMT+8
 
   redis:
-    host: 10.38.224.35
-    port: 7152
+    host: 10.38.224.47
+    port: 4282
     password: ""
 
 pagehelper:
