@@ -16,7 +16,7 @@ spring:
     name: vltava
   datasource:
     #test
-    url: jdbc:mysql://${db.mysql.vltava_agent_tool.rw.host}:${db.mysql.vltava_agent_tool.rw.port}/vlatava_agent_tool?serverTimezone=CTT&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true&connectTimeout=2000
+    url: jdbc:mysql://${db.mysql.vltava_agent_tool.rw.host}:${db.mysql.vltava_agent_tool.rw.port}/vltava_agent_tool?serverTimezone=CTT&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true&connectTimeout=2000
     username: ${db.mysql.vltava_agent_tool.rw.user}
     password: ${db.mysql.vltava_agent_tool.rw.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
