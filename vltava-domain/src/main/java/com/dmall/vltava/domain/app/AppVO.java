@@ -29,6 +29,9 @@ public class AppVO {
     @Column(name = "update_time")
     private Date updateTime;
 
+    @Column(name = "_tenant_id")
+    private Long tenantId;
+
     /**
      * @return id
      */
@@ -94,5 +97,13 @@ public class AppVO {
 
     public void setBuildGroup(String buildGroup) {
         this.buildGroup = buildGroup;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 }

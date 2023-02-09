@@ -1,5 +1,7 @@
 package com.dmall.vltava.domain.mock;
 
+import javax.persistence.Column;
+
 /**
  * @author Rob
  * @date Create in 3:28 下午 2020/7/29
@@ -11,6 +13,9 @@ public class RegisterVO {
     private String zone;
     private String group;
     private Long time;
+
+    @Column(name = "_tenant_id")
+    private Long tenantId;
 
     public RegisterVO(){}
 
@@ -71,5 +76,13 @@ public class RegisterVO {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 }

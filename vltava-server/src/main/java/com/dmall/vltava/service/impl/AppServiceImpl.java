@@ -35,6 +35,7 @@ public class AppServiceImpl implements AppService {
     public void save(AppVO appVO) {
         try {
             appVO.setUpdateTime(new Date(System.currentTimeMillis()));
+            appVO.setTenantId(-1L);
             appManageMapper.insert(appVO);
         } catch (Exception e) {
             e.printStackTrace();

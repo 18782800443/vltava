@@ -55,6 +55,7 @@ public class MockManager {
             cls.setImplicit(mockVO.getImplicit());
             cls.setDescriptions(mockVO.getDescriptions());
             cls.setMockKey(mockVO.getMockKey());
+            cls.setTenantId(-1L);
             if (mockVO.getId() == null) {
                 cls.setAppId(mockVO.getAppId());
                 cls.setYn(1);

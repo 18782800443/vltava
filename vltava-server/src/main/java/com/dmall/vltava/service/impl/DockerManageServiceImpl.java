@@ -46,6 +46,7 @@ public class DockerManageServiceImpl implements DockerManageService {
         Boolean needUpload = false;
         // 不存在就insert
         if (sqlData == null) {
+            registerVO.setTenantId(-1L);
             dockerManage = converter(registerVO);
             if (dockerManageMapper.insert(dockerManage) != 1) {
                 throw new CommonException("保存失败 " + JSON.toJSONString(dockerManage));
