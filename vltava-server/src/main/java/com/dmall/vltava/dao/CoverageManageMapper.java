@@ -13,12 +13,12 @@ import java.util.List;
 @Component("CoverageManageMapper")
 public interface CoverageManageMapper extends MyMapper<CoverageManage> {
 
-    @Select("select count(1) from coverage_manage where yn=1 and task_name=#{coverageTaskName}")
+    @Select("select count(1) from coverage_manage where yn=1 and _tenant_id=-1 and task_name=#{coverageTaskName}")
     Integer exist(@Param("coverageTaskName") String coverageTaskName);
 
     @Select({"<script>",
             "select * from coverage_manage",
-            "where 1=1",
+            "where 1=1 and _tenant_id=-1",
             "<when test='appId!=\"\" and appId!=null'>",
             "and app_id=#{appId}",
             "</when>",
@@ -29,15 +29,15 @@ public interface CoverageManageMapper extends MyMapper<CoverageManage> {
             "</script>"})
     List<CoverageManage> filter(@Param("appId") Integer appId, @Param("taskName") String taskName);
 
-    @Select("select id from coverage_manage where yn=1 and task_name=#{taskName}")
+    @Select("select id from coverage_manage where yn=1 and _tenant_id=-1 and task_name=#{taskName}")
     Integer selectIdByTaskName(@Param("taskName") String taskName);
 
-    @Select("select id,task_status,version from coverage_manage where yn=1 and task_status!=0")
+    @Select("select id,task_status,version from coverage_manage where yn=1 and _tenant_id=-1 and task_status!=0")
     List<CoverageManage> getAllValid();
 
-    @Select("select id,task_status,version from coverage_manage where yn=1 and id in (#{ids})")
+    @Select("select id,task_status,version from coverage_manage where yn=1 and _tenant_id=-1 and id in (#{ids})")
     List<CoverageManage> getAllAgentReuqest(@Param("ids") String ids);
 
-    @Select("select id,version,modify_time from coverage_manage where yn=1 and task_status=4")
+    @Select("select id,version,modify_time from coverage_manage where yn=1 and _tenant_id=-1 and task_status=4")
     List<CoverageManage> getAllInvalid();
 }
