@@ -5,6 +5,8 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
+import org.junit.Test;
+//import org.testng.annotations.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,13 +64,13 @@ public class CacheUtil {
                     set(key, callable.call());
                 } catch (Exception e) {
                     e.printStackTrace();
-                    System.out.print(11111111111L);
                     throw new CommonException(e.getMessage(), e.getStackTrace());
                 } finally {
                     lock.unlock();
                     logger.warn("KEY【 " + key + " 】已解锁");
                 }
-                return get(key,callable);
+//                set(key, callable.call());
+                return get(key, callable);
             } else {
                 try {
                     logger.warn("KEY【 " + key + " 】缓存无效，已有线程重入中，等待500ms后重试...");

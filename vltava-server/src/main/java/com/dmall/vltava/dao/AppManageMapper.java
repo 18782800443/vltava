@@ -29,6 +29,6 @@ public interface AppManageMapper extends MyMapper<AppVO> {
     @Select("Select * from app_manage where system_unique_name=#{uName} and zone=#{zone} and build_group=#{group} and _tenant_id=-1")
     AppVO selectBySystemUniqueNameAndZone(@Param("uName") String systemUniqueName, @Param("zone") String zone, @Param("group") String group);
 
-    @Select("select * from mock_manage where id=${id} and _tenant_id=-1")
+    @Select("select * from app_manage where id=${id} and _tenant_id=-1")
     AppVO selectById(@Param("id") Integer id);
 }
