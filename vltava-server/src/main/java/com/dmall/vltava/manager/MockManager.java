@@ -41,7 +41,7 @@ public class MockManager {
     public int save(MockVO mockVO) {
         try {
             if (mockVO.getVersion() != null && mockVO.getId() != null) {
-                Integer oldVersion = mockMapper.selectByPrimaryKey(mockVO.getId()).getVersion();
+                Integer oldVersion = mockMapper.selectById(mockVO.getId()).getVersion();
                 if (!mockVO.getVersion().equals(oldVersion)) {
                     throw new CommonException("已有人捷足先登了， 请刷新页面重试");
                 }
@@ -83,7 +83,8 @@ public class MockManager {
     }
 
     public MockVO getMockVoById(Integer mockId) {
-        MockManage mockManage = mockMapper.selectByPrimaryKey(mockId);
+        MockManage mockManage = mockMapper.selectById(mockId);
+
         if (mockManage == null) {
             throw new CommonException("没有对应ID");
         }

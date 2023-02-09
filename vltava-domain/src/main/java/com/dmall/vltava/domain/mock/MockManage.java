@@ -35,6 +35,9 @@ public class MockManage {
 
     private Integer connect;
 
+    @Column(name = "_tenant_id")
+    private Long tenantId;
+
     public String getMockKey() {
         return mockKey;
     }
@@ -182,4 +185,11 @@ public class MockManage {
         this.descriptions = descriptions;
     }
 
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
+    }
 }

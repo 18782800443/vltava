@@ -87,7 +87,7 @@ public class AppServiceImpl implements AppService {
 
         @Override
         public Object call() throws Exception {
-            return appManageMapper.selectByPrimaryKey(id);
+            return appManageMapper.selectById(id);
         }
     }
 }
