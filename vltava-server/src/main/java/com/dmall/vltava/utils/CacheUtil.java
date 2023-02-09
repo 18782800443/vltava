@@ -61,7 +61,7 @@ public class CacheUtil {
                     logger.warn("KEY【 " + key + " 】缓存无效，加锁重新获取缓存ing...");
                     set(key, callable.call());
                 } catch (Exception e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     throw new CommonException(e.getMessage(), e.getStackTrace());
                 } finally {
                     lock.unlock();
