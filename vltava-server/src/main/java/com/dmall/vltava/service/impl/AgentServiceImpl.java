@@ -15,11 +15,13 @@ import com.dmall.vltava.service.AgentService;
 import com.dmall.vltava.service.AppService;
 import com.dmall.vltava.service.DockerManageService;
 import com.dmall.vltava.utils.HttpUtils;
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.DecimalMax;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
@@ -61,20 +63,35 @@ public class AgentServiceImpl implements AgentService {
         });
     }
 
+
     @Override
     public void updateData(Integer taskId) {
         MockVO mockVO = mockManager.getMockVoById(taskId);
-        RegisterVO registerVO = uploadPrepare(mockVO);
-        String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
-        dealResult(resp);
+        List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
+        for (RegisterVO registerVO: registerVOList){
+            String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
+            dealResult(resp);
+        }
+
+//        MockVO mockVO = mockManager.getMockVoById(taskId);
+//        RegisterVO registerVO = uploadPrepare(mockVO);
+//        String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
+//        dealResult(resp);
     }
 
     @Override
     public void updateStatus(Integer taskId) {
         MockVO mockVO = mockManager.getStatusById(taskId);
-        RegisterVO registerVO = uploadPrepare(mockVO);
-        String resp = HttpUtils.updateStatus(registerVO, mockVO);
-        dealResult(resp);
+        List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
+        for (RegisterVO registerVO: registerVOList){
+            String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
+            dealResult(resp);
+        }
+
+//        MockVO mockVO = mockManager.getStatusById(taskId);
+//        RegisterVO registerVO = uploadPrepare(mockVO);
+//        String resp = HttpUtils.updateStatus(registerVO, mockVO);
+//        dealResult(resp);
     }
 
     @Override
@@ -206,6 +223,35 @@ public class AgentServiceImpl implements AgentService {
             throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
         }
         return registerVO;
+    }
+
+    /**
+     * 不同分组分别上传数据准备
+     *
+     * @param mockVO
+     * @return
+     */
+    private List<RegisterVO> uploadPrepareAll(MockVO mockVO) {
+        AppVO appVO = appService.getAppInfo(mockVO.getAppId());
+        mockVO.setAppVo(appVO);
+        // 设置任务状态到action, updateStatus 只有部分信息
+        if (mockVO.getMockActionList() != null) {
+            for (MockActionVO mockActionVO : mockVO.getMockActionList()) {
+                mockActionVO.setTaskStatus(mockVO.getTaskStatus());
+            }
+        }
+        List<String> allBuildGroup = Lists.newArrayList("blue", "gray", "gray02", "gray03", "gray04");
+        List<RegisterVO> registerVOList = new ArrayList<>();
+        for(String buildGroup: allBuildGroup){
+            RegisterVO registerVO = dockerManageService.getSystemInfo(new RegisterVO(mockVO.getAppVo().getSystemUniqueName(), mockVO.getAppVo().getZone(), buildGroup));
+            if (registerVO!=null){
+                registerVOList.add(registerVO);
+            }
+        }
+        if(registerVOList.isEmpty()){
+            throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
+        }
+        return registerVOList;
     }
 
     /**
