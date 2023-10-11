@@ -9,6 +9,7 @@ import com.dmall.vltava.domain.enums.TaskStatusEnum;
 import com.dmall.vltava.domain.mock.MockActionVO;
 import com.dmall.vltava.domain.mock.MockManage;
 import com.dmall.vltava.domain.mock.MockVO;
+import com.dmall.vltava.domain.mock.RegisterVO;
 import com.dmall.vltava.manager.MockManager;
 import com.dmall.vltava.service.AgentService;
 import com.dmall.vltava.service.AppService;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Rob
@@ -111,8 +113,9 @@ public class MockController {
         if (mockVO.getTaskStatus() == null || mockVO.getId() == null || mockVO.getVersion() == null) {
             return CommonResult.fail("数据错误，参数不能为空");
         }
-        mockService.updateStatus(mockVO);
-        return CommonResult.pass("状态更新成功！", mockVO.getId());
+//        mockService.updateStatus(mockVO);
+        List<RegisterVO> registerVOList = mockService.updateStatusAllGroup(mockVO);
+        return CommonResult.pass( "变更状态成功的分组：", registerVOList.stream().map(RegisterVO::getGroup).collect(Collectors.toList()));
     }
 
     @HandleException

@@ -1,5 +1,9 @@
 package com.dmall.vltava.service;
 
+import com.dmall.vltava.domain.mock.RegisterVO;
+
+import java.util.List;
+
 /**
  * @author Rob
  * @date Create in 3:07 下午 2020/8/21
@@ -17,6 +21,27 @@ public interface AgentService {
      * @param taskId
      */
     void updateData(Integer taskId);
+
+    /**
+     * 更新状态到agent
+     * @param taskId
+     * @return 更新失败的
+     */
+    List<RegisterVO> updateDataAllGroup(Integer taskId);
+
+    /**
+     * 更新状态到agent
+     * @param registerVOList, taskId
+     * @return 更新失败的
+     */
+    List<RegisterVO> updateStatusAllGroup( Integer taskId);
+
+    /**
+     * 更新状态到agent
+     * @param taskId mockId
+     */
+
+    void updateSuccessRegisterVoStatus(List<RegisterVO> registerVOList, Integer taskId);
 
     /**
      * 更新状态到agent

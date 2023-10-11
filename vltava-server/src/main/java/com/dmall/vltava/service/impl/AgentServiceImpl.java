@@ -16,6 +16,7 @@ import com.dmall.vltava.service.AppService;
 import com.dmall.vltava.service.DockerManageService;
 import com.dmall.vltava.utils.HttpUtils;
 import com.google.common.collect.Lists;
+import net.sf.json.util.JSONUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,32 +67,83 @@ public class AgentServiceImpl implements AgentService {
 
     @Override
     public void updateData(Integer taskId) {
+//        MockVO mockVO = mockManager.getMockVoById(taskId);
+//        List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
+//        List<String> errorMsg = new ArrayList<>();
+//        for (RegisterVO registerVO: registerVOList){
+//            try {
+//                String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
+//                dealResult(resp);
+//            }catch (Exception e){
+//                errorMsg.add(JSON.toJSONString(registerVO));
+//                logger.error("updateData error: " + e.getMessage());
+//            }
+////            String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
+////            dealResult(resp);
+//        }
+
+        MockVO mockVO = mockManager.getMockVoById(taskId);
+        RegisterVO registerVO = uploadPrepare(mockVO);
+        String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
+        dealResult(resp);
+    }
+
+    @Override
+    public List<RegisterVO> updateDataAllGroup(Integer taskId) {
         MockVO mockVO = mockManager.getMockVoById(taskId);
         List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
+        List<RegisterVO> successRegisterVO = new ArrayList<>();
         for (RegisterVO registerVO: registerVOList){
-            String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
+            try {
+                String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
+                dealResult(resp);
+                successRegisterVO.add(registerVO);
+            }catch (Exception e){
+                logger.error("updateData error: " + e.getMessage());
+            }
+        }
+        if(successRegisterVO.isEmpty()){
+            throw new CommonException("所有单元均无法注入，请检查是否部署在单元");
+        }
+        return successRegisterVO;
+    }
+
+    @Override
+    public void updateSuccessRegisterVoStatus(List<RegisterVO> registerVOList, Integer taskId) {
+        MockVO mockVO = mockManager.getStatusById(taskId);
+        for (RegisterVO registerVO: registerVOList){
+            String resp = HttpUtils.updateStatus(registerVO, mockVO);
             dealResult(resp);
         }
+    }
 
-//        MockVO mockVO = mockManager.getMockVoById(taskId);
-//        RegisterVO registerVO = uploadPrepare(mockVO);
-//        String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
-//        dealResult(resp);
+    @Override
+    public List<RegisterVO> updateStatusAllGroup(Integer taskId) {
+
+        MockVO mockVO = mockManager.getMockVoById(taskId);
+        List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
+        List<RegisterVO> successRegisterVO = new ArrayList<>();
+        for (RegisterVO registerVO: registerVOList){
+            try {
+                String resp = HttpUtils.updateStatus(registerVO, mockVO);
+                dealResult(resp);
+                successRegisterVO.add(registerVO);
+            }catch (Exception e){
+                logger.error("updateData error: " + e.getMessage());
+            }
+        }
+        if(successRegisterVO.isEmpty()){
+            throw new CommonException("所有单元均无法注入，请检查是否部署在单元");
+        }
+        return successRegisterVO;
     }
 
     @Override
     public void updateStatus(Integer taskId) {
         MockVO mockVO = mockManager.getStatusById(taskId);
-        List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
-        for (RegisterVO registerVO: registerVOList){
-            String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
-            dealResult(resp);
-        }
-
-//        MockVO mockVO = mockManager.getStatusById(taskId);
-//        RegisterVO registerVO = uploadPrepare(mockVO);
-//        String resp = HttpUtils.updateStatus(registerVO, mockVO);
-//        dealResult(resp);
+        RegisterVO registerVO = uploadPrepare(mockVO);
+        String resp = HttpUtils.updateStatus(registerVO, mockVO);
+        dealResult(resp);
     }
 
     @Override

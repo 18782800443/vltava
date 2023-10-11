@@ -2,6 +2,9 @@ package com.dmall.vltava.service;
 
 import com.dmall.vltava.domain.base.*;
 import com.dmall.vltava.domain.mock.MockVO;
+import com.dmall.vltava.domain.mock.RegisterVO;
+
+import java.util.List;
 
 /**
  * @author Rob
@@ -19,6 +22,13 @@ public interface MockService {
      * @param mockVO
      */
     Boolean updateStatus(MockVO mockVO);
+
+    /**
+     * 设置所有分组对应的状态值
+     * @param mockVO
+     * @return
+     */
+    List<RegisterVO> updateStatusAllGroup(MockVO mockVO);
 
     /**
      * 重试

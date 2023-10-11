@@ -6,6 +6,7 @@ import com.dmall.vltava.domain.base.*;
 import com.dmall.vltava.domain.enums.TaskStatusEnum;
 import com.dmall.vltava.domain.mock.MockActionVO;
 import com.dmall.vltava.domain.mock.MockVO;
+import com.dmall.vltava.domain.mock.RegisterVO;
 import com.dmall.vltava.manager.MockManager;
 import com.dmall.vltava.service.*;
 
@@ -17,7 +18,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @author Rob
@@ -61,17 +64,17 @@ public class MockServiceImpl implements MockService {
         mockVO.setId(taskId);
         if (needUpload) {
             if (isNew) {
-                agentService.updateData(taskId);
+                List<RegisterVO> successRegisterVO = agentService.updateDataAllGroup(taskId);
                 // 注入成功变更状态
                 mockVO.setTaskStatus(TaskStatusEnum.READY.getKey());
-                if (!updateStatus(mockVO)) {
+                if (updateStatusAllGroup(mockVO).isEmpty()) {
                     throw new CommonException("变更状态失败，请重试");
                 }
-                agentService.updateStatus(taskId);
-                return CommonResult.pass("保存成功，可以点击任务状态开始mock了", mockVO.getId());
+                agentService.updateSuccessRegisterVoStatus(successRegisterVO, taskId);
+                return CommonResult.pass("保存成功的分组:", successRegisterVO.stream().map(RegisterVO::getGroup).collect(Collectors.toList()));
             } else {
-                agentService.updateData(taskId);
-                return CommonResult.pass("保存成功", mockVO.getId());
+                List<RegisterVO> successRegisterVO = agentService.updateStatusAllGroup(taskId);
+                return CommonResult.pass("保存成功的分组", successRegisterVO.stream().map(RegisterVO::getGroup).collect(Collectors.toList()));
             }
         } else {
             return CommonResult.pass("保存成功", mockVO.getId());
@@ -88,6 +91,21 @@ public class MockServiceImpl implements MockService {
         if (1 == mockManager.updateMysqlStatus(mockVO)) {
             agentService.updateStatus(mockVO.getId());
             return true;
+        } else {
+            throw new CommonException("变更状态失败，请重试");
+        }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public List<RegisterVO> updateStatusAllGroup(MockVO mockVO) {
+        if (agentService.canUpdate(mockVO.getId())) {
+            throw new CommonException("Docker重启数据加载中, 暂停修改状态，请1分钟后重试!");
+        }
+        logger.info(String.format("尝试变更【 %s 】状态: %s ", mockVO.getId(), TaskStatusEnum.getDescByKey(mockVO.getTaskStatus())));
+        if (1 == mockManager.updateMysqlStatus(mockVO)) {
+            List<RegisterVO> registerVOList = agentService.updateStatusAllGroup(mockVO.getId());
+            return registerVOList;
         } else {
             throw new CommonException("变更状态失败，请重试");
         }
