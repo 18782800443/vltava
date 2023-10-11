@@ -73,7 +73,7 @@ public class MockServiceImpl implements MockService {
                 agentService.updateSuccessRegisterVoStatus(successRegisterVO, taskId);
                 return CommonResult.pass("保存成功的分组:" + successRegisterVO.stream().map(RegisterVO::getGroup).collect(Collectors.toList()));
             } else {
-                List<RegisterVO> successRegisterVO = agentService.updateStatusAllGroup(taskId);
+                List<RegisterVO> successRegisterVO = agentService.updateDataAllGroup(taskId);
                 return CommonResult.pass("保存成功的分组" + successRegisterVO.stream().map(RegisterVO::getGroup).collect(Collectors.toList()));
             }
         } else {
