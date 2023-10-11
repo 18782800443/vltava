@@ -115,7 +115,7 @@ public class MockController {
         }
 //        mockService.updateStatus(mockVO);
         List<RegisterVO> registerVOList = mockService.updateStatusAllGroup(mockVO);
-        return CommonResult.pass( "变更状态成功的分组：", registerVOList.stream().map(RegisterVO::getGroup).collect(Collectors.toList()));
+        return CommonResult.pass( "变更状态成功的分组：" + registerVOList.stream().map(RegisterVO::getGroup).collect(Collectors.toList()));
     }
 
     @HandleException
