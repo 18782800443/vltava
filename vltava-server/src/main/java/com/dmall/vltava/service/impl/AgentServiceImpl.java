@@ -294,7 +294,7 @@ public class AgentServiceImpl implements AgentService {
     private List<RegisterVO> uploadPrepareAll(List<MockVO> mockVOList) {
         MockVO mockVO = mockVOList.get(0);
         AppVO appVO = appService.getAppInfo(mockVO.getAppId());
-        List<RegisterVO> registerVOList = dockerManageService.getSystemInfoAllGroup(new RegisterVO(mockVO.getAppVo().getSystemUniqueName(), mockVO.getAppVo().getZone(), mockVO.getAppVo().getBuildGroup()));
+        List<RegisterVO> registerVOList = dockerManageService.getSystemInfoAllGroup(new RegisterVO(appVO.getSystemUniqueName(), appVO.getZone(), appVO.getBuildGroup()));
         if (registerVOList.isEmpty()) {
             throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
         }
@@ -321,7 +321,7 @@ public class AgentServiceImpl implements AgentService {
      */
     private List<RegisterVO> uploadPrepareAll(MockVO mockVO) {
         AppVO appVO = appService.getAppInfo(mockVO.getAppId());
-        List<RegisterVO> registerVOList = dockerManageService.getSystemInfoAllGroup(new RegisterVO(mockVO.getAppVo().getSystemUniqueName(), mockVO.getAppVo().getZone(), mockVO.getAppVo().getBuildGroup()));
+        List<RegisterVO> registerVOList = dockerManageService.getSystemInfoAllGroup(new RegisterVO(appVO.getSystemUniqueName(), appVO.getZone(), appVO.getBuildGroup()));
         if (registerVOList.isEmpty()) {
             throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
         }
