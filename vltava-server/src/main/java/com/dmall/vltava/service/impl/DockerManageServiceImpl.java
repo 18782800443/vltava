@@ -72,31 +72,18 @@ public class DockerManageServiceImpl implements DockerManageService {
                     }
                     if (appService.getAppInfoByRegisterInfo(registerVO) != null){
                         needUpload = true;
-                        updateCache(dockerManage);
+                        if(dockerManage1.getBuildGroup().equals(dockerManage.getBuildGroup())){
+                            updateCache(dockerManage1);
+                        }
                     }
                 } else {
                     logger.info(String.format("【%s】最新版本为 %s, 丢弃过期消息 %s",
                             dockerManage1.getSystemUniqueName(), dockerManage1.getRegTime(), JSON.toJSONString(registerVO)));
                 }
             }
-            if (needUpload.equals(false)){
-                logger.info("当前服务在平台无应用，仅保存 ：" + JSON.toJSONString(registerVO));
-            }
-//             过期丢弃
-//            if (sqlData.getRegTime() > registerVO.getTime()) {
-//                logger.info(String.format("【%s】最新版本为 %s, 丢弃过期消息 %s",
-//                        sqlData.getSystemUniqueName(), sqlData.getRegTime(), JSON.toJSONString(registerVO)));
-//                return false;
-//            } else {
-//                dockerManage = converter(registerVO);
-//                dockerManage.setId(sqlData.getId());
-//                if (dockerManageMapper.updateByPrimaryKey(dockerManage) != 1) {
-//                    throw new CommonException("更新失败 " + JSON.toJSONString(dockerManage));
-//                }
-//                if (appService.getAppInfoByRegisterInfo(registerVO) != null){
-//                    needUpload = true;
-//                }
-//            }
+        }
+        if (needUpload.equals(false)){
+            logger.info("当前服务在平台无应用，仅保存 ：" + JSON.toJSONString(registerVO));
         }
         return needUpload;
     }

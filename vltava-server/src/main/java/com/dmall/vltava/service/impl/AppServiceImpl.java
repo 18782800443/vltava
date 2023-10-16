@@ -76,7 +76,7 @@ public class AppServiceImpl implements AppService {
 
     @Override
     public AppVO getAppInfoByRegisterInfo(RegisterVO registerVO) {
-        return appManageMapper.selectBySystemUniqueNameAndZone(registerVO.getSystemUniqueName(), registerVO.getZone(), registerVO.getGroup());
+        return appManageMapper.selectBySystemUniqueNameAndZone(registerVO.getSystemUniqueName(), registerVO.getZone(), "blue");
     }
 
     private class AppCall implements Callable {

@@ -298,18 +298,18 @@ public class AgentServiceImpl implements AgentService {
         if (registerVOList.isEmpty()) {
             throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
         }
-        for(RegisterVO registerVO: registerVOList){
-            appVO.setBuildGroup(registerVO.getGroup());
-            for(MockVO vo : mockVOList){
-                vo.setAppVo(appVO);
-                // 设置任务状态到action, updateStatus 只有部分信息
-                if (vo.getMockActionList() != null) {
-                    for (MockActionVO mockActionVO : vo.getMockActionList()) {
-                        mockActionVO.setTaskStatus(vo.getTaskStatus());
-                    }
+//        for(RegisterVO registerVO: registerVOList){
+//        appVO.setBuildGroup(registerVO.getGroup());
+        for(MockVO vo : mockVOList){
+            vo.setAppVo(appVO);
+            // 设置任务状态到action, updateStatus 只有部分信息
+            if (vo.getMockActionList() != null) {
+                for (MockActionVO mockActionVO : vo.getMockActionList()) {
+                    mockActionVO.setTaskStatus(vo.getTaskStatus());
                 }
             }
         }
+//        }
         return registerVOList;
     }
 
@@ -325,16 +325,16 @@ public class AgentServiceImpl implements AgentService {
         if (registerVOList.isEmpty()) {
             throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
         }
-        for(RegisterVO registerVO: registerVOList){
-            appVO.setBuildGroup(registerVO.getGroup());
-            mockVO.setAppVo(appVO);
-            // 设置任务状态到action, updateStatus 只有部分信息
-            if (mockVO.getMockActionList() != null) {
-                for (MockActionVO mockActionVO : mockVO.getMockActionList()) {
-                    mockActionVO.setTaskStatus(mockVO.getTaskStatus());
-                }
+//        for(RegisterVO registerVO: registerVOList){
+//            appVO.setBuildGroup(registerVO.getGroup());
+        mockVO.setAppVo(appVO);
+        // 设置任务状态到action, updateStatus 只有部分信息
+        if (mockVO.getMockActionList() != null) {
+            for (MockActionVO mockActionVO : mockVO.getMockActionList()) {
+                mockActionVO.setTaskStatus(mockVO.getTaskStatus());
             }
         }
+//        }
         return registerVOList;
     }
 
