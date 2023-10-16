@@ -47,7 +47,6 @@ public class DockerManageServiceImpl implements DockerManageService {
         DockerManage sqlData = dockerManageMapper.getExist(registerVO.getSystemUniqueName(), registerVO.getZone(), registerVO.getGroup());
         //适配往全部分组发送消息
         List<DockerManage> dockerManageList = dockerManageMapper.getAllGroup(registerVO.getSystemUniqueName(), registerVO.getZone());
-
         DockerManage dockerManage = null;
         Boolean needUpload = false;
         // 不存在就insert
@@ -56,6 +55,7 @@ public class DockerManageServiceImpl implements DockerManageService {
             dockerManage = converter(registerVO);
             //适配往全部分组发送消息
             if (!dockerManageList.isEmpty()){
+                dockerManageList.forEach(this::updateCache);
                 needUpload = true;
             }
 
