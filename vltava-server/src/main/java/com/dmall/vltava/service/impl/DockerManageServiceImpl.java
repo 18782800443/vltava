@@ -73,7 +73,7 @@ public class DockerManageServiceImpl implements DockerManageService {
                     if (appService.getAppInfoByRegisterInfo(registerVO) != null){
                         needUpload = true;
                         if(dockerManage1.getBuildGroup().equals(dockerManage.getBuildGroup())){
-                            updateCache(dockerManage1);
+                            updateCache(dockerManage);
                         }
                     }
                 } else {
