@@ -1,6 +1,7 @@
 package com.dmall.vltava.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.beust.jcommander.internal.Lists;
 import com.dmall.vltava.dao.DockerManageMapper;
 import com.dmall.vltava.domain.DockerManage;
 import com.dmall.vltava.domain.base.CommonException;
@@ -15,7 +16,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -42,33 +45,59 @@ public class DockerManageServiceImpl implements DockerManageService {
     @Override
     public Boolean save(RegisterVO registerVO) {
         DockerManage sqlData = dockerManageMapper.getExist(registerVO.getSystemUniqueName(), registerVO.getZone(), registerVO.getGroup());
+        //适配往全部分组发送消息
+        List<DockerManage> dockerManageList = dockerManageMapper.getAllGroup(registerVO.getSystemUniqueName(), registerVO.getZone());
+
         DockerManage dockerManage = null;
         Boolean needUpload = false;
         // 不存在就insert
         if (sqlData == null) {
             registerVO.setTenantId(-1L);
             dockerManage = converter(registerVO);
+            //适配往全部分组发送消息
+            if (!dockerManageList.isEmpty()){
+                needUpload = true;
+            }
+
             if (dockerManageMapper.insert(dockerManage) != 1) {
                 throw new CommonException("保存失败 " + JSON.toJSONString(dockerManage));
             }
         } else {
-            // 过期丢弃
-            if (sqlData.getRegTime() > registerVO.getTime()) {
-                logger.info(String.format("【%s】最新版本为 %s, 丢弃过期消息 %s",
-                        sqlData.getSystemUniqueName(), sqlData.getRegTime(), JSON.toJSONString(registerVO)));
-                return false;
-            } else {
-                dockerManage = converter(registerVO);
-                dockerManage.setId(sqlData.getId());
-                if (dockerManageMapper.updateByPrimaryKey(dockerManage) != 1) {
-                    throw new CommonException("更新失败 " + JSON.toJSONString(dockerManage));
-                }
-                if (appService.getAppInfoByRegisterInfo(registerVO) != null){
-                    needUpload = true;
+            for(DockerManage dockerManage1 : dockerManageList){
+                if (dockerManage1.getRegTime() < registerVO.getTime()) {
+                    dockerManage = converter(registerVO);
+                    dockerManage.setId(dockerManage1.getId());
+                    if (dockerManageMapper.updateByPrimaryKey(dockerManage) != 1) {
+                        throw new CommonException("更新失败 " + JSON.toJSONString(dockerManage));
+                    }
+                    if (appService.getAppInfoByRegisterInfo(registerVO) != null){
+                        needUpload = true;
+                        updateCache(dockerManage);
+                    }
+                } else {
+                    logger.info(String.format("【%s】最新版本为 %s, 丢弃过期消息 %s",
+                            dockerManage1.getSystemUniqueName(), dockerManage1.getRegTime(), JSON.toJSONString(registerVO)));
                 }
             }
+            if (needUpload.equals(false)){
+                logger.info("当前服务在平台无应用，仅保存 ：" + JSON.toJSONString(registerVO));
+            }
+//             过期丢弃
+//            if (sqlData.getRegTime() > registerVO.getTime()) {
+//                logger.info(String.format("【%s】最新版本为 %s, 丢弃过期消息 %s",
+//                        sqlData.getSystemUniqueName(), sqlData.getRegTime(), JSON.toJSONString(registerVO)));
+//                return false;
+//            } else {
+//                dockerManage = converter(registerVO);
+//                dockerManage.setId(sqlData.getId());
+//                if (dockerManageMapper.updateByPrimaryKey(dockerManage) != 1) {
+//                    throw new CommonException("更新失败 " + JSON.toJSONString(dockerManage));
+//                }
+//                if (appService.getAppInfoByRegisterInfo(registerVO) != null){
+//                    needUpload = true;
+//                }
+//            }
         }
-        updateCache(dockerManage);
         return needUpload;
     }
 
@@ -87,6 +116,26 @@ public class DockerManageServiceImpl implements DockerManageService {
                 return null;
             }
         }
+    }
+
+    @Override
+    public List<RegisterVO> getSystemInfoAllGroup(RegisterVO registerVO) {
+        List<RegisterVO> result = new ArrayList<>();
+        List<String> allBuildGroup = Lists.newArrayList("blue", "gray", "gray02", "gray03", "gray04");
+        for(String group:allBuildGroup){
+            registerVO.setGroup(group);
+            DockerManage dockerManage = (DockerManage) CacheUtil.get(getKey(registerVO));
+            if (dockerManage != null) {
+                result.add(converter(dockerManage));
+            } else {
+                dockerManage = dockerManageMapper.getExist(registerVO.getSystemUniqueName(), registerVO.getZone(), registerVO.getGroup());
+                if (dockerManage != null){
+                    updateCache(dockerManage);
+                    result.add(converter(dockerManage));
+                }
+            }
+        }
+        return result;
     }
 
     private void updateCache(DockerManage dockerManage) {

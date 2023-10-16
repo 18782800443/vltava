@@ -56,12 +56,23 @@ public class AgentServiceImpl implements AgentService {
             logger.info("当前应用无进行中mock, skip");
             return;
         }
-        RegisterVO registerVO = uploadPrepare(mockVOList);
-        CompletableFuture.runAsync(new ContinuesUpload(mockVOList, registerVO)).exceptionally(fn -> {
-            logger.error(fn.getMessage());
-            fn.printStackTrace();
-            return null;
-        });
+        List<RegisterVO> registerVOList = uploadPrepareAll(mockVOList);
+        for(RegisterVO registerVO: registerVOList){
+            for(MockVO mockVO:mockVOList){
+                mockVO.getAppVo().setBuildGroup(registerVO.getGroup());
+            }
+            CompletableFuture.runAsync(new ContinuesUpload(mockVOList, registerVO)).exceptionally(fn -> {
+                logger.error(fn.getMessage());
+                fn.printStackTrace();
+                return null;
+            });
+        }
+//        RegisterVO registerVO = uploadPrepare(mockVOList);
+//        CompletableFuture.runAsync(new ContinuesUpload(mockVOList, registerVO)).exceptionally(fn -> {
+//            logger.error(fn.getMessage());
+//            fn.printStackTrace();
+//            return null;
+//        });
     }
 
 
@@ -95,6 +106,7 @@ public class AgentServiceImpl implements AgentService {
         List<RegisterVO> successRegisterVO = new ArrayList<>();
         for (RegisterVO registerVO: registerVOList){
             try {
+                mockVO.getAppVo().setBuildGroup(registerVO.getGroup());
                 String resp = HttpUtils.updateData(registerVO, Collections.singletonList(mockVO));
                 dealResult(resp);
                 successRegisterVO.add(registerVO);
@@ -119,12 +131,12 @@ public class AgentServiceImpl implements AgentService {
 
     @Override
     public List<RegisterVO> updateStatusAllGroup(Integer taskId) {
-
         MockVO mockVO = mockManager.getMockVoById(taskId);
         List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
         List<RegisterVO> successRegisterVO = new ArrayList<>();
         for (RegisterVO registerVO: registerVOList){
             try {
+                mockVO.getAppVo().setBuildGroup(registerVO.getGroup());
                 String resp = HttpUtils.updateStatus(registerVO, mockVO);
                 dealResult(resp);
                 successRegisterVO.add(registerVO);
@@ -253,28 +265,52 @@ public class AgentServiceImpl implements AgentService {
             if (count == 9) {
                 logger.error(String.format("多次尝试推送信息至：【%s】-【%s】 at %s 失败， 请检查方法是否正确或联系管理员!", registerVO.getSystemUniqueName(), registerVO.getZone(), registerVO.getIp()));
             } else {
-                throw new CommonException(errorResp);
+                //往所有分组推送消息，有些应用分组不存在时，直接返回，不抛异常
+                return;
+//                throw new CommonException(errorResp);
             }
         }
     }
 
-    private RegisterVO uploadPrepare(List<MockVO> mockVOList) {
+//    private RegisterVO uploadPrepare(List<MockVO> mockVOList) {
+//        MockVO mockVO = mockVOList.get(0);
+//        AppVO appVO = appService.getAppInfo(mockVO.getAppId());
+//        for (MockVO vo : mockVOList) {
+//            vo.setAppVo(appVO);
+//            // 设置任务状态到action, updateStatus 只有部分信息
+//            if (vo.getMockActionList() != null) {
+//                for (MockActionVO mockActionVO : vo.getMockActionList()) {
+//                    mockActionVO.setTaskStatus(vo.getTaskStatus());
+//                }
+//            }
+//        }
+//        RegisterVO registerVO = dockerManageService.getSystemInfo(new RegisterVO(mockVO.getAppVo().getSystemUniqueName(), mockVO.getAppVo().getZone(), mockVO.getAppVo().getBuildGroup()));
+//        if (registerVO == null) {
+//            throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
+//        }
+//        return registerVO;
+//    }
+
+    private List<RegisterVO> uploadPrepareAll(List<MockVO> mockVOList) {
         MockVO mockVO = mockVOList.get(0);
         AppVO appVO = appService.getAppInfo(mockVO.getAppId());
-        for (MockVO vo : mockVOList) {
-            vo.setAppVo(appVO);
-            // 设置任务状态到action, updateStatus 只有部分信息
-            if (vo.getMockActionList() != null) {
-                for (MockActionVO mockActionVO : vo.getMockActionList()) {
-                    mockActionVO.setTaskStatus(vo.getTaskStatus());
+        List<RegisterVO> registerVOList = dockerManageService.getSystemInfoAllGroup(new RegisterVO(mockVO.getAppVo().getSystemUniqueName(), mockVO.getAppVo().getZone(), mockVO.getAppVo().getBuildGroup()));
+        if (registerVOList.isEmpty()) {
+            throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
+        }
+        for(RegisterVO registerVO: registerVOList){
+            appVO.setBuildGroup(registerVO.getGroup());
+            for(MockVO vo : mockVOList){
+                vo.setAppVo(appVO);
+                // 设置任务状态到action, updateStatus 只有部分信息
+                if (vo.getMockActionList() != null) {
+                    for (MockActionVO mockActionVO : vo.getMockActionList()) {
+                        mockActionVO.setTaskStatus(vo.getTaskStatus());
+                    }
                 }
             }
         }
-        RegisterVO registerVO = dockerManageService.getSystemInfo(new RegisterVO(mockVO.getAppVo().getSystemUniqueName(), mockVO.getAppVo().getZone(), mockVO.getAppVo().getBuildGroup()));
-        if (registerVO == null) {
-            throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
-        }
-        return registerVO;
+        return registerVOList;
     }
 
     /**
@@ -285,23 +321,19 @@ public class AgentServiceImpl implements AgentService {
      */
     private List<RegisterVO> uploadPrepareAll(MockVO mockVO) {
         AppVO appVO = appService.getAppInfo(mockVO.getAppId());
-        mockVO.setAppVo(appVO);
-        // 设置任务状态到action, updateStatus 只有部分信息
-        if (mockVO.getMockActionList() != null) {
-            for (MockActionVO mockActionVO : mockVO.getMockActionList()) {
-                mockActionVO.setTaskStatus(mockVO.getTaskStatus());
-            }
-        }
-        List<String> allBuildGroup = Lists.newArrayList("blue", "gray", "gray02", "gray03", "gray04");
-        List<RegisterVO> registerVOList = new ArrayList<>();
-        for(String buildGroup: allBuildGroup){
-            RegisterVO registerVO = dockerManageService.getSystemInfo(new RegisterVO(mockVO.getAppVo().getSystemUniqueName(), mockVO.getAppVo().getZone(), buildGroup));
-            if (registerVO!=null){
-                registerVOList.add(registerVO);
-            }
-        }
-        if(registerVOList.isEmpty()){
+        List<RegisterVO> registerVOList = dockerManageService.getSystemInfoAllGroup(new RegisterVO(mockVO.getAppVo().getSystemUniqueName(), mockVO.getAppVo().getZone(), mockVO.getAppVo().getBuildGroup()));
+        if (registerVOList.isEmpty()) {
             throw new CommonException("当前系统暂无注册信息，请检查是否部署在单元");
+        }
+        for(RegisterVO registerVO: registerVOList){
+            appVO.setBuildGroup(registerVO.getGroup());
+            mockVO.setAppVo(appVO);
+            // 设置任务状态到action, updateStatus 只有部分信息
+            if (mockVO.getMockActionList() != null) {
+                for (MockActionVO mockActionVO : mockVO.getMockActionList()) {
+                    mockActionVO.setTaskStatus(mockVO.getTaskStatus());
+                }
+            }
         }
         return registerVOList;
     }

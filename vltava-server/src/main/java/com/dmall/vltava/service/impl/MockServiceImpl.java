@@ -115,7 +115,10 @@ public class MockServiceImpl implements MockService {
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public CommonResult retry(MockVO mockVO) {
         mockManager.updateMysqlStatus(mockVO);
-        agentService.updateData(mockVO.getId());
+        List<RegisterVO> registerVOList = agentService.updateDataAllGroup(mockVO.getId());
+        if (registerVOList.isEmpty()) {
+            throw new CommonException("重试失败，请重试");
+        }
         mockManager.updateConnect(mockVO.getAppId(), true);
         return CommonResult.pass("重试成功");
     }
