@@ -45,7 +45,7 @@ public class DockerManageServiceImpl implements DockerManageService {
     @Override
     public Boolean save(RegisterVO registerVO) {
         DockerManage sqlData = dockerManageMapper.getExist(registerVO.getSystemUniqueName(), registerVO.getZone(), registerVO.getGroup());
-        //适配往全部分组发送消息
+        //适配多分组场景
         List<DockerManage> dockerManageList = dockerManageMapper.getAllGroup(registerVO.getSystemUniqueName(), registerVO.getZone());
         DockerManage dockerManage = null;
         Boolean needUpload = false;
@@ -53,6 +53,7 @@ public class DockerManageServiceImpl implements DockerManageService {
         if (sqlData == null) {
             registerVO.setTenantId(-1L);
             dockerManage = converter(registerVO);
+            //适配多分组场景
             if(!dockerManageList.isEmpty()){
                 updateCache(dockerManage);
                 needUpload = true;
@@ -61,6 +62,7 @@ public class DockerManageServiceImpl implements DockerManageService {
                 throw new CommonException("保存失败 " + JSON.toJSONString(dockerManage));
             }
         } else {
+            // 适配多分组场景
             for(DockerManage dockerManage1 : dockerManageList){
                 if (dockerManage1.getRegTime() < registerVO.getTime()) {
                     dockerManage = converter(registerVO);

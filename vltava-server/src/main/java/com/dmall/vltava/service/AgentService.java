@@ -14,7 +14,7 @@ public interface AgentService {
      * 异步上传, 内部自动重试9次，服务器重启用
      * @param taskId mockId
      */
-    void uploadDataAsync(Integer taskId);
+    void uploadDataAsync(Integer taskId, RegisterVO registerVO);
 
     /**
      * 更新数据到agent

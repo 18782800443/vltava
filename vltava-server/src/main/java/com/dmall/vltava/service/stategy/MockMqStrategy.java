@@ -64,7 +64,7 @@ public class MockMqStrategy implements MqStrategy {
             if (needUpload){
                 AppVO appVO = appService.getAppInfoByRegisterInfo(registerVO);
                 if (appVO != null){
-                    agentService.uploadDataAsync(appVO.getId());
+                    agentService.uploadDataAsync(appVO.getId(), registerVO);
                 }else{
                     logger.error("未找到应用的blue分组信息: " + JSON.toJSONString(registerVO));
                 }
