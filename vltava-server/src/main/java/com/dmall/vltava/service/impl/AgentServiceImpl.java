@@ -56,11 +56,11 @@ public class AgentServiceImpl implements AgentService {
             logger.info("当前应用无进行中mock, skip");
             return;
         }
-        RegisterVO registerVO1 = uploadPrepare(mockVOList);
+        uploadPrepare(mockVOList);
         mockVOList.forEach(mockVO -> {
             mockVO.getAppVo().setBuildGroup(registerVO.getGroup());
         });
-        CompletableFuture.runAsync(new ContinuesUpload(mockVOList, registerVO1)).exceptionally(fn -> {
+        CompletableFuture.runAsync(new ContinuesUpload(mockVOList, registerVO)).exceptionally(fn -> {
             logger.error(fn.getMessage());
             fn.printStackTrace();
             return null;

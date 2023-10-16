@@ -42,6 +42,7 @@ public class AppController {
         if (StringUtils.isEmpty(appVO.getAppName())) {
             return CommonResult.fail("保存参数不能为空!");
         }
+        appVO.setBuildGroup("blue");
         appService.appExists(appVO);
         appService.save(appVO);
         return CommonResult.pass("保存成功");
