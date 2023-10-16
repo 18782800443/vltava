@@ -53,12 +53,10 @@ public class DockerManageServiceImpl implements DockerManageService {
         if (sqlData == null) {
             registerVO.setTenantId(-1L);
             dockerManage = converter(registerVO);
-            //适配往全部分组发送消息
-            if (!dockerManageList.isEmpty()){
-                dockerManageList.forEach(this::updateCache);
+            if(!dockerManageList.isEmpty()){
+                updateCache(dockerManage);
                 needUpload = true;
             }
-
             if (dockerManageMapper.insert(dockerManage) != 1) {
                 throw new CommonException("保存失败 " + JSON.toJSONString(dockerManage));
             }
