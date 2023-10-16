@@ -59,11 +59,12 @@ public class AgentServiceImpl implements AgentService {
         List<RegisterVO> registerVOList = uploadPrepareAll(mockVOList);
         for(RegisterVO registerVO: registerVOList){
             for(MockVO mockVO:mockVOList){
-                AppVO appVO = mockVO.getAppVo();
-                appVO.setBuildGroup(registerVO.getGroup());
-                mockVO.setAppVo(appVO);
-//                mockVO.getAppVo().setBuildGroup(registerVO.getGroup());
+//                AppVO appVO = mockVO.getAppVo();
+//                appVO.setBuildGroup(registerVO.getGroup());
+//                mockVO.setAppVo(appVO);
+                mockVO.getAppVo().setBuildGroup(registerVO.getGroup());
             }
+            logger.info("mockVOList:"+JSON.toJSONString(mockVOList));
             CompletableFuture.runAsync(new ContinuesUpload(mockVOList, registerVO)).exceptionally(fn -> {
                 logger.error(fn.getMessage());
                 fn.printStackTrace();
