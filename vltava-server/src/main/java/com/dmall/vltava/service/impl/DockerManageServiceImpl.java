@@ -65,12 +65,12 @@ public class DockerManageServiceImpl implements DockerManageService {
                 if (dockerManage1.getRegTime() < registerVO.getTime()) {
                     dockerManage = converter(registerVO);
                     dockerManage.setId(dockerManage1.getId());
-                    if (dockerManageMapper.updateByPrimaryKey(dockerManage) != 1) {
-                        throw new CommonException("更新失败 " + JSON.toJSONString(dockerManage));
-                    }
-                    if (appService.getAppInfoByRegisterInfo(registerVO) != null){
-                        needUpload = true;
-                        if(dockerManage1.getBuildGroup().equals(dockerManage.getBuildGroup())){
+                    if(dockerManage1.getBuildGroup().equals(dockerManage.getBuildGroup())){
+                        if (dockerManageMapper.updateByPrimaryKey(dockerManage) != 1) {
+                            throw new CommonException("更新失败 " + JSON.toJSONString(dockerManage));
+                        }
+                        if (appService.getAppInfoByRegisterInfo(registerVO) != null){
+                            needUpload = true;
                             updateCache(dockerManage);
                         }
                     }
