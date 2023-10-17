@@ -100,7 +100,7 @@ public class AgentServiceImpl implements AgentService {
 
     @Override
     public List<RegisterVO> updateDataAllGroup(Integer taskId) {
-        MockVO mockVO = mockManager.getMockVoById(taskId);
+        MockVO mockVO = mockManager.getStatusById(taskId);
         List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
         List<RegisterVO> successRegisterVO = new ArrayList<>();
         for (RegisterVO registerVO: registerVOList){
