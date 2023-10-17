@@ -100,7 +100,7 @@ public class AgentServiceImpl implements AgentService {
 
     @Override
     public List<RegisterVO> updateDataAllGroup(Integer taskId) {
-        MockVO mockVO = mockManager.getStatusById(taskId);
+        MockVO mockVO = mockManager.getMockVoById(taskId);
         List<RegisterVO> registerVOList = uploadPrepareAll(mockVO);
         List<RegisterVO> successRegisterVO = new ArrayList<>();
         for (RegisterVO registerVO: registerVOList){
@@ -122,7 +122,9 @@ public class AgentServiceImpl implements AgentService {
     @Override
     public void updateSuccessRegisterVoStatus(List<RegisterVO> registerVOList, Integer taskId) {
         MockVO mockVO = mockManager.getStatusById(taskId);
+        uploadPrepare(mockVO);
         for (RegisterVO registerVO: registerVOList){
+            mockVO.getAppVo().setBuildGroup(registerVO.getGroup());
             String resp = HttpUtils.updateStatus(registerVO, mockVO);
             dealResult(resp);
         }
