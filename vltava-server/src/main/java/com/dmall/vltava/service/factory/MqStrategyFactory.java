@@ -1,8 +1,8 @@
-package com.dmall.vltava.service.factory;
+package com.testhuamou.vltava.service.factory;
 
-import com.dmall.vltava.domain.base.AgentMsgVO;
-import com.dmall.vltava.domain.enums.AttachTypeEnum;
-import com.dmall.vltava.service.stategy.MqStrategy;
+import com.testhuamou.vltava.domain.base.AgentMsgVO;
+import com.testhuamou.vltava.domain.enums.AttachTypeEnum;
+import com.testhuamou.vltava.service.stategy.MqStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

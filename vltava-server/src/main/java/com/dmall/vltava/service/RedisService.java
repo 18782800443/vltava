@@ -1,8 +1,8 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
 
-import com.dmall.vltava.domain.base.VersionVO;
-import com.dmall.vltava.domain.enums.AttachTypeEnum;
+import com.testhuamou.vltava.domain.base.VersionVO;
+import com.testhuamou.vltava.domain.enums.AttachTypeEnum;
 
 import java.util.Map;
 

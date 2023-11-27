@@ -1,6 +1,6 @@
-//package com.dmall.vltava.utils;
+//package com.testhuamou.vltava.utils;
 //
-//import com.dmall.vltava.domain.base.CommonException;
+//import com.testhuamou.vltava.domain.base.CommonException;
 //import com.jcraft.jsch.*;
 //import org.apache.commons.io.IOUtils;
 //import org.slf4j.Logger;

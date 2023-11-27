@@ -1,16 +1,16 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.beust.jcommander.internal.Lists;
-import com.dmall.vltava.dao.DockerManageMapper;
-import com.dmall.vltava.domain.DockerManage;
-import com.dmall.vltava.domain.base.CommonException;
-import com.dmall.vltava.domain.mock.RegisterVO;
-import com.dmall.vltava.service.AgentService;
-import com.dmall.vltava.service.AppService;
-import com.dmall.vltava.service.DockerManageService;
-import com.dmall.vltava.service.stategy.MockMqStrategy;
-import com.dmall.vltava.utils.CacheUtil;
+import com.testhuamou.vltava.dao.DockerManageMapper;
+import com.testhuamou.vltava.domain.DockerManage;
+import com.testhuamou.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.mock.RegisterVO;
+import com.testhuamou.vltava.service.AgentService;
+import com.testhuamou.vltava.service.AppService;
+import com.testhuamou.vltava.service.DockerManageService;
+import com.testhuamou.vltava.service.stategy.MockMqStrategy;
+import com.testhuamou.vltava.utils.CacheUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

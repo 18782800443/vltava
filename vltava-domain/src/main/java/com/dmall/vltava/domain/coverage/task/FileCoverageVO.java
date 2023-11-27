@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.coverage.task;
+package com.testhuamou.vltava.domain.coverage.task;
 
 import lombok.Data;
 

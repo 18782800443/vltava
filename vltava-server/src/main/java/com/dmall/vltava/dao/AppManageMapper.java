@@ -1,7 +1,7 @@
-package com.dmall.vltava.dao;
+package com.testhuamou.vltava.dao;
 
-import com.dmall.vltava.utils.MyMapper;
-import com.dmall.vltava.domain.app.AppVO;
+import com.testhuamou.vltava.utils.MyMapper;
+import com.testhuamou.vltava.domain.app.AppVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

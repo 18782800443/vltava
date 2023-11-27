@@ -1,7 +1,7 @@
-package com.dmall.vltava.domain.annotation;
+package com.testhuamou.vltava.domain.annotation;
 
-import com.dmall.vltava.domain.base.CommonException;
-import com.dmall.vltava.domain.base.CommonResult;
+import com.testhuamou.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.base.CommonResult;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -22,7 +22,7 @@ public class HandleExceptionAspect {
     public static final Logger logger = LoggerFactory.getLogger(HandleExceptionAspect.class);
 
 
-    @Around("@annotation(com.dmall.vltava.domain.annotation.HandleException)")
+    @Around("@annotation(com.testhuamou.vltava.domain.annotation.HandleException)")
     public Object around(ProceedingJoinPoint point){
         MethodSignature methodSignature = (MethodSignature) point.getSignature();
         Method method = methodSignature.getMethod();

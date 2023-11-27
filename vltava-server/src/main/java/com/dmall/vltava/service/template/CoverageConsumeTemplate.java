@@ -1,8 +1,8 @@
-package com.dmall.vltava.service.template;
+package com.testhuamou.vltava.service.template;
 
 import com.alibaba.fastjson.JSON;
-import com.dmall.vltava.domain.base.AgentMsgVO;
-import com.dmall.vltava.domain.coverage.TraceMsgVO;
+import com.testhuamou.vltava.domain.base.AgentMsgVO;
+import com.testhuamou.vltava.domain.coverage.TraceMsgVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.coverage;
+package com.testhuamou.vltava.domain.coverage;
 
 /**
  * @author Rob

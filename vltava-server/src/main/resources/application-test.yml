@@ -34,24 +34,24 @@ pagehelper:
 
 mybatis:
   mapper-locations: classpath:mapping/*.xml
-  type-aliases-package: com.dmall.vltava.domain
+  type-aliases-package: com.testhuamou.vltava.domain
   configuration:
     map-underscore-to-camel-case: true
 mapper:
-  mappers: com.dmall.vltava.utils.MyMapper
+  mappers: com.testhuamou.vltava.utils.MyMapper
   not-empty: false
   identity: MYSQL
 
-dmall:
+testhuamou:
   dmc:
     projectCode: SupplyChainTool-RTA
     appCode: vlatava-tool
   admiral:
     enabled: true
-    appName: aladdin-f-i-t-dmall-fit-vltava
-    appKey: aladdin-f-i-t-dmall-fit-vltava
+    appName: aladdin-f-i-t-testhuamou-fit-vltava
+    appKey: aladdin-f-i-t-testhuamou-fit-vltava
     secretKey: 4f8049c9bf8baf1c8efeb5cb
-    serverHttpAddress: meta.admiral.dmall.com
+    serverHttpAddress: meta.admiral.testhuamou.com
     env: test
   logback:
     level: debug
@@ -61,10 +61,10 @@ dmall:
   mq:
     topic:
       rkt-vltava-req-test: rkt_vltava_req_test_test
-    group: group_dmall_fit_vltava
+    group: group_testhuamou_fit_vltava
   dmg:
     projectCode: aladdin-FIT
-    appCode: dmall-fit-vltava
+    appCode: testhuamou-fit-vltava
     dmcServerAddress: ${__infra.dmc.server.addr}
     secretKey: 5795DBAF-1888-47AA-89B2-CCD224BE65E9
     serverAddress: ${__infra.dmg.server.addr}

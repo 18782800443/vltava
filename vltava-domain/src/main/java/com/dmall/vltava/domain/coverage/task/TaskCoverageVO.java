@@ -1,6 +1,6 @@
-package com.dmall.vltava.domain.coverage.task;
+package com.testhuamou.vltava.domain.coverage.task;
 
-import com.dmall.vltava.domain.coverage.CoverageVO;
+import com.testhuamou.vltava.domain.coverage.CoverageVO;
 import lombok.Data;
 
 import javax.persistence.Entity;

@@ -1,11 +1,11 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.app.AppVO;
-import com.dmall.vltava.domain.base.BaseFilter;
-import com.dmall.vltava.domain.base.FilteredResult;
-import com.dmall.vltava.domain.base.VersionVO;
-import com.dmall.vltava.domain.coverage.CoverageManage;
-import com.dmall.vltava.domain.coverage.CoverageVO;
+import com.testhuamou.vltava.domain.app.AppVO;
+import com.testhuamou.vltava.domain.base.BaseFilter;
+import com.testhuamou.vltava.domain.base.FilteredResult;
+import com.testhuamou.vltava.domain.base.VersionVO;
+import com.testhuamou.vltava.domain.coverage.CoverageManage;
+import com.testhuamou.vltava.domain.coverage.CoverageVO;
 
 import java.util.List;
 import java.util.Map;

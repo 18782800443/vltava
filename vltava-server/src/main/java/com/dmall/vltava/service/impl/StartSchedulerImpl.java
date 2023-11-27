@@ -1,10 +1,10 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
 
-import com.dmall.vltava.service.CoverageService;
-import com.dmall.vltava.service.HealthService;
-import com.dmall.vltava.service.MockService;
-import com.dmall.vltava.service.RedisService;
+import com.testhuamou.vltava.service.CoverageService;
+import com.testhuamou.vltava.service.HealthService;
+import com.testhuamou.vltava.service.MockService;
+import com.testhuamou.vltava.service.RedisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,14 +1,14 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.dmall.vltava.dao.AppManageMapper;
-import com.dmall.vltava.domain.base.*;
-import com.dmall.vltava.domain.enums.TaskStatusEnum;
-import com.dmall.vltava.domain.mock.MockActionVO;
-import com.dmall.vltava.domain.mock.MockVO;
-import com.dmall.vltava.domain.mock.RegisterVO;
-import com.dmall.vltava.manager.MockManager;
-import com.dmall.vltava.service.*;
+import com.testhuamou.vltava.dao.AppManageMapper;
+import com.testhuamou.vltava.domain.base.*;
+import com.testhuamou.vltava.domain.enums.TaskStatusEnum;
+import com.testhuamou.vltava.domain.mock.MockActionVO;
+import com.testhuamou.vltava.domain.mock.MockVO;
+import com.testhuamou.vltava.domain.mock.RegisterVO;
+import com.testhuamou.vltava.manager.MockManager;
+import com.testhuamou.vltava.service.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

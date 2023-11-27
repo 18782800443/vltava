@@ -1,6 +1,6 @@
-package com.dmall.vltava.domain.coverage;
+package com.testhuamou.vltava.domain.coverage;
 
-import com.dmall.vltava.util.ExtendedNextVersion;
+import com.testhuamou.vltava.util.ExtendedNextVersion;
 import tk.mybatis.mapper.annotation.Version;
 
 import javax.persistence.Column;

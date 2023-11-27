@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.mock.client;
+package com.testhuamou.vltava.domain.mock.client;
 
 
 import java.io.Serializable;

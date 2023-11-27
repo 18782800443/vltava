@@ -1,4 +1,4 @@
-package com.dmall.vltava.config;
+package com.testhuamou.vltava.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dmall.vltava.dao.AppManageMapper">
-  <resultMap id="BaseResultMap" type="com.dmall.vltava.domain.app.AppVO">
+<mapper namespace="com.testhuamou.vltava.dao.AppManageMapper">
+  <resultMap id="BaseResultMap" type="com.testhuamou.vltava.domain.app.AppVO">
     <!--
       WARNING - @mbg.generated
     -->

@@ -1,8 +1,8 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.git.GitCommitVO;
-import com.dmall.vltava.domain.git.GitDiffVO;
-import com.dmall.vltava.domain.git.GitVO;
+import com.testhuamou.vltava.domain.git.GitCommitVO;
+import com.testhuamou.vltava.domain.git.GitDiffVO;
+import com.testhuamou.vltava.domain.git.GitVO;
 
 import java.util.List;
 import java.util.Map;

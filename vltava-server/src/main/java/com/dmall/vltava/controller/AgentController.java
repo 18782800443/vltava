@@ -1,9 +1,9 @@
-package com.dmall.vltava.controller;
+package com.testhuamou.vltava.controller;
 
-import com.dmall.vltava.domain.base.CommonResult;
-import com.dmall.vltava.domain.base.VersionVO;
-import com.dmall.vltava.domain.enums.AttachTypeEnum;
-import com.dmall.vltava.utils.RedisUtils;
+import com.testhuamou.vltava.domain.base.CommonResult;
+import com.testhuamou.vltava.domain.base.VersionVO;
+import com.testhuamou.vltava.domain.enums.AttachTypeEnum;
+import com.testhuamou.vltava.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestBody;

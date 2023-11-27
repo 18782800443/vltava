@@ -1,9 +1,9 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
-import com.dmall.vltava.domain.base.VersionVO;
-import com.dmall.vltava.domain.coverage.CoverageVO;
-import com.dmall.vltava.service.RedisService;
-import com.dmall.vltava.utils.RedisUtils;
+import com.testhuamou.vltava.domain.base.VersionVO;
+import com.testhuamou.vltava.domain.coverage.CoverageVO;
+import com.testhuamou.vltava.service.RedisService;
+import com.testhuamou.vltava.utils.RedisUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

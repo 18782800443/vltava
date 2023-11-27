@@ -1,6 +1,6 @@
-package com.dmall.vltava.domain.mock.client;
+package com.testhuamou.vltava.domain.mock.client;
 
-import com.dmall.vltava.domain.mock.MockActionVO;
+import com.testhuamou.vltava.domain.mock.MockActionVO;
 
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class MockRule extends MockClientBase{
      * 1. 不需要在MockActionVO设置expectKey，会以生成的mockKey为唯一id进行匹配
      * 2. 返回结果中会带有生成的mockKey，请查看后保存
      * 3. 使用R-DOT框架的同学需要触发此mockAction时，
-     *    调用com.dmall.rdot.action.base.BaseRPC#autoRun(java.lang.String) || com.dmall.rdot.action.base.BaseRPC#autoRunAsObj(java.lang.String)
+     *    调用com.testhuamou.rdot.action.base.BaseRPC#autoRun(java.lang.String) || com.testhuamou.rdot.action.base.BaseRPC#autoRunAsObj(java.lang.String)
      * 4. 不使用框架的同学需要触发此mockAction时，请求需带上隐式传参 {"vltavaMockKey": mockKey}
      *
      * false时： 必须要在MockActionVO设置expectKey

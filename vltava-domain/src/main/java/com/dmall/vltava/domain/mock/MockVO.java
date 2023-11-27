@@ -1,7 +1,7 @@
-package com.dmall.vltava.domain.mock;
+package com.testhuamou.vltava.domain.mock;
 
-import com.dmall.vltava.domain.app.AppVO;
-import com.dmall.vltava.domain.enums.MockTypeEnum;
+import com.testhuamou.vltava.domain.app.AppVO;
+import com.testhuamou.vltava.domain.enums.MockTypeEnum;
 import lombok.Data;
 
 

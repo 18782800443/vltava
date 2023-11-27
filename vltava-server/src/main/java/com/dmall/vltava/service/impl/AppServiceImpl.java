@@ -1,13 +1,13 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
-import com.dmall.vltava.dao.AppManageMapper;
-import com.dmall.vltava.domain.app.AppVO;
-import com.dmall.vltava.domain.base.BaseFilter;
-import com.dmall.vltava.domain.base.CommonException;
-import com.dmall.vltava.domain.base.FilteredResult;
-import com.dmall.vltava.domain.mock.RegisterVO;
-import com.dmall.vltava.service.AppService;
-import com.dmall.vltava.utils.CacheUtil;
+import com.testhuamou.vltava.dao.AppManageMapper;
+import com.testhuamou.vltava.domain.app.AppVO;
+import com.testhuamou.vltava.domain.base.BaseFilter;
+import com.testhuamou.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.base.FilteredResult;
+import com.testhuamou.vltava.domain.mock.RegisterVO;
+import com.testhuamou.vltava.service.AppService;
+import com.testhuamou.vltava.utils.CacheUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

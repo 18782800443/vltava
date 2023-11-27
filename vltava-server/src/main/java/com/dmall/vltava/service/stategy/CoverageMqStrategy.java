@@ -1,8 +1,8 @@
-//package com.dmall.vltava.service.stategy;
+//package com.testhuamou.vltava.service.stategy;
 //
 //import com.alibaba.fastjson.JSON;
-//import com.dmall.vltava.domain.base.AgentMsgVO;
-//import com.dmall.vltava.service.template.AbstractConsumeTemplate;
+//import com.testhuamou.vltava.domain.base.AgentMsgVO;
+//import com.testhuamou.vltava.service.template.AbstractConsumeTemplate;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 //import org.springframework.beans.factory.annotation.Autowired;

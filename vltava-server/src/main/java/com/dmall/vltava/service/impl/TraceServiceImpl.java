@@ -1,7 +1,7 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
-import com.dmall.vltava.domain.coverage.TraceDO;
-import com.dmall.vltava.service.TraceService;
+import com.testhuamou.vltava.domain.coverage.TraceDO;
+import com.testhuamou.vltava.service.TraceService;
 import org.springframework.stereotype.Service;
 
 

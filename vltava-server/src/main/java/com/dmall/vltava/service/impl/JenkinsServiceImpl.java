@@ -1,12 +1,12 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.dmall.vltava.domain.base.CommonException;
-import com.dmall.vltava.domain.git.GitVO;
-import com.dmall.vltava.domain.jenkins.JenkinsBuildVO;
-import com.dmall.vltava.service.JenkinsService;
-import com.dmall.vltava.utils.HttpUtils;
+import com.testhuamou.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.git.GitVO;
+import com.testhuamou.vltava.domain.jenkins.JenkinsBuildVO;
+import com.testhuamou.vltava.service.JenkinsService;
+import com.testhuamou.vltava.utils.HttpUtils;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -24,11 +24,11 @@ import java.util.regex.Pattern;
 public class JenkinsServiceImpl implements JenkinsService {
     private static OkHttpClient client = new OkHttpClient();
 
-//    private final static String CONFIG_URL = "http://testdeploy.dmall.com/job/%s/config.xml%s";
+//    private final static String CONFIG_URL = "http://testdeploy.testhuamou.com/job/%s/config.xml%s";
 //    private final static Pattern CONFIG_PATTERN = Pattern.compile("(?<=configName>)((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})(\\.((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})){3}");
-    private final static String BASE_URL = "http://testdeploy.dmall.com/job/%s/%s/api/json";
+    private final static String BASE_URL = "http://testdeploy.testhuamou.com/job/%s/%s/api/json";
     private final static String KEY_CAUSE = "hudson.model.CauseAction";
-    private final static String KEY_BUILD = "hudson.plugins.git.com.dmall.vltava.util.BuildData";
+    private final static String KEY_BUILD = "hudson.plugins.git.com.testhuamou.vltava.util.BuildData";
     private final static String CACHE_KEY = "vltava_jenkins_info";
     private final static Integer NOT_FOUND = 404;
 

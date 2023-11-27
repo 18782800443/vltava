@@ -1,8 +1,8 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.base.CommonResult;
-import com.dmall.vltava.domain.mock.client.MockRule;
-import com.dmall.vltava.domain.mock.client.MockStatus;
+import com.testhuamou.vltava.domain.base.CommonResult;
+import com.testhuamou.vltava.domain.mock.client.MockRule;
+import com.testhuamou.vltava.domain.mock.client.MockStatus;
 
 /**
  * @author Rob

@@ -1,4 +1,4 @@
-package com.dmall.vltava.utils;
+package com.testhuamou.vltava.utils;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;

@@ -1,6 +1,6 @@
-package com.dmall.vltava.domain.enums;
+package com.testhuamou.vltava.domain.enums;
 
-import com.dmall.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.base.CommonException;
 
 /**
  * @author Rob

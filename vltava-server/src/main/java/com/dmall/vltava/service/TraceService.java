@@ -1,6 +1,6 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.coverage.TraceDO;
+import com.testhuamou.vltava.domain.coverage.TraceDO;
 
 /**
  * @author Rob

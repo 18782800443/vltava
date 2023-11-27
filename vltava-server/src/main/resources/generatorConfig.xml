@@ -8,29 +8,29 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.dmall.vltava.utils.MyMapper"/>
+            <property name="mappers" value="com.testhuamou.vltava.utils.MyMapper"/>
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://db.mysql.test.dmall.com:13306/dmall_test_vltava"
+                        connectionURL="jdbc:mysql://db.mysql.test.testhuamou.com:13306/testhuamou_test_vltava"
                         userId="wumart"
                         password="!QAZxsw2">
         </jdbcConnection>
 
         <!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
-                        <!--connectionURL="jdbc:mysql://10.248.224.3:11103/dmall_test"-->
+                        <!--connectionURL="jdbc:mysql://10.248.224.3:11103/testhuamou_test"-->
                         <!--userId="vendor_joint"-->
                         <!--password="30Ykrq!9sSM1X14">-->
         <!--</jdbcConnection>-->
 
         <!-- 对于生成的pojo所在包 -->
-        <javaModelGenerator targetPackage="com.dmall.vltava.domain" targetProject="vltava-domain/src/main/java"/>
+        <javaModelGenerator targetPackage="com.testhuamou.vltava.domain" targetProject="vltava-domain/src/main/java"/>
 
 		<!-- 对于生成的mapper所在目录 -->
         <sqlMapGenerator targetPackage="mapping" targetProject="vltava-server/src/main/resources"/>
 
 		<!-- 配置mapper对应的java映射 -->
-        <javaClientGenerator targetPackage="com.dmall.vltava.dao" targetProject="vltava-server/src/main/java"
+        <javaClientGenerator targetPackage="com.testhuamou.vltava.dao" targetProject="vltava-server/src/main/java"
                              type="XMLMAPPER"/>
 
         <!--用完记得注释掉，不然会重复生成mapper数据 -->

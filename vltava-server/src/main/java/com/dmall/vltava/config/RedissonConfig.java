@@ -1,4 +1,4 @@
-package com.dmall.vltava.config;
+package com.testhuamou.vltava.config;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;

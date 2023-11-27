@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.handler;
+package com.testhuamou.vltava.domain.handler;
 
 
 import com.alibaba.fastjson.JSON;

@@ -1,4 +1,4 @@
-package com.dmall.vltava.config;
+package com.testhuamou.vltava.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;

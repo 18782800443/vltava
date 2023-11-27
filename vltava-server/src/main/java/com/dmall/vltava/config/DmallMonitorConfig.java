@@ -1,17 +1,17 @@
-package com.dmall.vltava.config;
+package com.testhuamou.vltava.config;
 
 
-import com.dmall.monitor.sdk.MonitorConfig;
+import com.testhuamou.monitor.sdk.MonitorConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DmallMonitorConfig {
+public class testhuamouMonitorConfig {
 
-	@Value("${dmall.dmc.projectCode}")
+	@Value("${testhuamou.dmc.projectCode}")
 	private String projectCode;
-	@Value("${dmall.dmc.appCode}")
+	@Value("${testhuamou.dmc.appCode}")
 	private String appCode;
 
 	@Bean

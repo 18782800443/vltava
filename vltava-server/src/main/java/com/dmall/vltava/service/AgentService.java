@@ -1,6 +1,6 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.mock.RegisterVO;
+import com.testhuamou.vltava.domain.mock.RegisterVO;
 
 import java.util.List;
 
