@@ -17,11 +17,11 @@ spring:
     name: vltava
   datasource:
   #dev
-#    url: jdbc:mysql://10.248.224.3:11103/dmall_test?characterEncoding=utf8&serverTimezone=GMT%2b8
+#    url: jdbc:mysql://10.248.224.3:11103/testhuamou_test?characterEncoding=utf8&serverTimezone=GMT%2b8
 #    username: vendor_joint
 #    password: 30Ykrq!9sSM1X14
   #test
-    url: jdbc:mysql://db.mysql.test.dmall.com:13306/dmall_test_vltava?characterEncoding=utf8&serverTimezone=GMT%2b8
+    url: jdbc:mysql://db.mysql.test.testhuamou.com:13306/testhuamou_test_vltava?characterEncoding=utf8&serverTimezone=GMT%2b8
     username: qtest_super
     password: becareful
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -44,14 +44,14 @@ pagehelper:
 
 mybatis:
   mapper-locations: classpath:mapping/*.xml
-  type-aliases-package: com.dmall.vltava.domain
+  type-aliases-package: com.testhuamou.vltava.domain
   configuration:
     map-underscore-to-camel-case: true
 mapper:
-  mappers: com.dmall.vltava.utils.MyMapper
+  mappers: com.testhuamou.vltava.utils.MyMapper
   not-empty: false
   identity: MYSQL
-dmall:
+testhuamou:
   dmc:
     projectCode: vltava-service
     appCode: vltava-service

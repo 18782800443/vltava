@@ -1,13 +1,13 @@
-package com.dmall.vltava.service.stategy;
+package com.testhuamou.vltava.service.stategy;
 
 import com.alibaba.fastjson.JSON;
-import com.dmall.vltava.domain.app.AppVO;
-import com.dmall.vltava.domain.base.AgentMsgVO;
-import com.dmall.vltava.domain.mock.RegisterVO;
-import com.dmall.vltava.manager.MockManager;
-import com.dmall.vltava.service.AgentService;
-import com.dmall.vltava.service.AppService;
-import com.dmall.vltava.service.DockerManageService;
+import com.testhuamou.vltava.domain.app.AppVO;
+import com.testhuamou.vltava.domain.base.AgentMsgVO;
+import com.testhuamou.vltava.domain.mock.RegisterVO;
+import com.testhuamou.vltava.manager.MockManager;
+import com.testhuamou.vltava.service.AgentService;
+import com.testhuamou.vltava.service.AppService;
+import com.testhuamou.vltava.service.DockerManageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

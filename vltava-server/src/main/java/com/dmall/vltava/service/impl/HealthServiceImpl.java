@@ -1,10 +1,10 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.dmall.vltava.dao.DockerManageMapper;
-import com.dmall.vltava.domain.DockerManage;
-import com.dmall.vltava.manager.MockManager;
-import com.dmall.vltava.service.HealthService;
+import com.testhuamou.vltava.dao.DockerManageMapper;
+import com.testhuamou.vltava.domain.DockerManage;
+import com.testhuamou.vltava.manager.MockManager;
+import com.testhuamou.vltava.service.HealthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
-import com.dmall.vltava.domain.base.AgentMsgVO;
-import com.dmall.vltava.service.MQService;
+import com.testhuamou.vltava.domain.base.AgentMsgVO;
+import com.testhuamou.vltava.service.MQService;
 import org.springframework.stereotype.Service;
 
 /**

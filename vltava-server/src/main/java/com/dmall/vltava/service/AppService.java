@@ -1,9 +1,9 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.app.AppVO;
-import com.dmall.vltava.domain.base.BaseFilter;
-import com.dmall.vltava.domain.base.FilteredResult;
-import com.dmall.vltava.domain.mock.RegisterVO;
+import com.testhuamou.vltava.domain.app.AppVO;
+import com.testhuamou.vltava.domain.base.BaseFilter;
+import com.testhuamou.vltava.domain.base.FilteredResult;
+import com.testhuamou.vltava.domain.mock.RegisterVO;
 
 import java.util.List;
 import java.util.Map;

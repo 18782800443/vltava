@@ -1,10 +1,10 @@
-package com.dmall.vltava.controller;
+package com.testhuamou.vltava.controller;
 
-import com.dmall.vltava.domain.annotation.HandleException;
-import com.dmall.vltava.domain.base.CommonResult;
-import com.dmall.vltava.domain.mock.client.MockRule;
-import com.dmall.vltava.domain.mock.client.MockStatus;
-import com.dmall.vltava.service.MockClient;
+import com.testhuamou.vltava.domain.annotation.HandleException;
+import com.testhuamou.vltava.domain.base.CommonResult;
+import com.testhuamou.vltava.domain.mock.client.MockRule;
+import com.testhuamou.vltava.domain.mock.client.MockStatus;
+import com.testhuamou.vltava.service.MockClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

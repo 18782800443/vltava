@@ -1,21 +1,21 @@
-package com.dmall.vltava.service.remote;
+package com.testhuamou.vltava.service.remote;
 
 import com.alibaba.fastjson.JSON;
-import com.dmall.vltava.domain.annotation.HandleException;
-import com.dmall.vltava.domain.base.CommonException;
-import com.dmall.vltava.domain.base.CommonResult;
-import com.dmall.vltava.domain.enums.MockTypeEnum;
-import com.dmall.vltava.domain.enums.TaskStatusEnum;
-import com.dmall.vltava.domain.mock.*;
+import com.testhuamou.vltava.domain.annotation.HandleException;
+import com.testhuamou.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.base.CommonResult;
+import com.testhuamou.vltava.domain.enums.MockTypeEnum;
+import com.testhuamou.vltava.domain.enums.TaskStatusEnum;
+import com.testhuamou.vltava.domain.mock.*;
 
-import com.dmall.vltava.domain.mock.client.MockClientBase;
-import com.dmall.vltava.domain.mock.client.MockRule;
-import com.dmall.vltava.domain.mock.client.MockStatus;
-import com.dmall.vltava.manager.MockManager;
-import com.dmall.vltava.service.AgentService;
-import com.dmall.vltava.service.MockClient;
-import com.dmall.vltava.service.MockService;
-import com.dmall.vltava.service.impl.AgentServiceImpl;
+import com.testhuamou.vltava.domain.mock.client.MockClientBase;
+import com.testhuamou.vltava.domain.mock.client.MockRule;
+import com.testhuamou.vltava.domain.mock.client.MockStatus;
+import com.testhuamou.vltava.manager.MockManager;
+import com.testhuamou.vltava.service.AgentService;
+import com.testhuamou.vltava.service.MockClient;
+import com.testhuamou.vltava.service.MockService;
+import com.testhuamou.vltava.service.impl.AgentServiceImpl;
 import org.apache.dubbo.common.utils.PojoUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

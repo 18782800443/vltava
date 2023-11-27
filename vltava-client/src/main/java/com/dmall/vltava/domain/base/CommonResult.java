@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.base;
+package com.testhuamou.vltava.domain.base;
 
 
 import java.io.Serializable;

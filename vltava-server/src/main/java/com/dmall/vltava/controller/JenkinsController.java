@@ -1,9 +1,9 @@
-package com.dmall.vltava.controller;
+package com.testhuamou.vltava.controller;
 
-import com.dmall.vltava.domain.annotation.HandleException;
-import com.dmall.vltava.domain.base.CommonResult;
-import com.dmall.vltava.domain.jenkins.JenkinsBuildVO;
-import com.dmall.vltava.service.JenkinsService;
+import com.testhuamou.vltava.domain.annotation.HandleException;
+import com.testhuamou.vltava.domain.base.CommonResult;
+import com.testhuamou.vltava.domain.jenkins.JenkinsBuildVO;
+import com.testhuamou.vltava.service.JenkinsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

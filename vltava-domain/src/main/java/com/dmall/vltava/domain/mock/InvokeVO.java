@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.mock;
+package com.testhuamou.vltava.domain.mock;
 
 import lombok.Data;
 

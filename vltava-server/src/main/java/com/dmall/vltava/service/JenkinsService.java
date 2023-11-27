@@ -1,7 +1,7 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.git.GitVO;
-import com.dmall.vltava.domain.jenkins.JenkinsBuildVO;
+import com.testhuamou.vltava.domain.git.GitVO;
+import com.testhuamou.vltava.domain.jenkins.JenkinsBuildVO;
 
 /**
  * @author Rob

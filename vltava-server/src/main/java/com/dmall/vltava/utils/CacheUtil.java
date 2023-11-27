@@ -1,6 +1,6 @@
-package com.dmall.vltava.utils;
+package com.testhuamou.vltava.utils;
 
-import com.dmall.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.base.CommonException;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalListener;

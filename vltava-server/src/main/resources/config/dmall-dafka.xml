@@ -4,27 +4,27 @@
         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-    <bean id="monitorConfig" class="com.dmall.monitor.sdk.MonitorConfig" init-method="monitorInit">
-        <constructor-arg name="projectCode" value="${dmall.dmg.projectCode}"/>
-        <constructor-arg name="appCode" value="${dmall.dmg.appCode}"/>
-        <constructor-arg name="dmcServerAddress" value="${dmall.dmg.dmcServerAddress}"/>
+    <bean id="monitorConfig" class="com.testhuamou.monitor.sdk.MonitorConfig" init-method="monitorInit">
+        <constructor-arg name="projectCode" value="${testhuamou.dmg.projectCode}"/>
+        <constructor-arg name="appCode" value="${testhuamou.dmg.appCode}"/>
+        <constructor-arg name="dmcServerAddress" value="${testhuamou.dmg.dmcServerAddress}"/>
         <constructor-arg name="startupMonitor" value="true"/>
     </bean>
 
 
-    <bean id="authInfo" class="com.dmall.dmg.sdk4.comm.auth.AuthInfo">
-        <constructor-arg name="secretKey" value="${dmall.dmg.secretKey}"/>
-        <constructor-arg name="serverAddr" value="${dmall.dmg.serverAddress}"/>
+    <bean id="authInfo" class="com.testhuamou.dmg.sdk4.comm.auth.AuthInfo">
+        <constructor-arg name="secretKey" value="${testhuamou.dmg.secretKey}"/>
+        <constructor-arg name="serverAddr" value="${testhuamou.dmg.serverAddress}"/>
         <constructor-arg name="authTimeout" value="5000"/>
     </bean>
 
     <!--    rocket生产者-->
-    <bean id="rocketProducer" class="com.dmall.dmg.sdk4.rocketmq.producer.DefRocketProducerWrapper"
+    <bean id="rocketProducer" class="com.testhuamou.dmg.sdk4.rocketmq.producer.DefRocketProducerWrapper"
           depends-on="monitorConfig" lazy-init="true">
         <property name="authInfo" ref="authInfo"/>
         <property name="topics">
             <set>
-                <value>${dmall.mq.topic.rkt-vltava-req-test}</value>
+                <value>${testhuamou.mq.topic.rkt-vltava-req-test}</value>
             </set>
         </property>
         <!-->可以不填<-->
@@ -38,17 +38,17 @@
 
 
         <!--    rocket 消费者-->
-        <bean id="rocketMessageHandler" class="com.dmall.vltava.controller.MQConsumer"/>
-        <bean id="rocketConsumer" class="com.dmall.dmg.sdk4.rocketmq.consumer.CoreRocketConsumerImpl"
+        <bean id="rocketMessageHandler" class="com.testhuamou.vltava.controller.MQConsumer"/>
+        <bean id="rocketConsumer" class="com.testhuamou.dmg.sdk4.rocketmq.consumer.CoreRocketConsumerImpl"
               depends-on="monitorConfig" init-method="start">
             <property name="authInfo" ref="authInfo"/>
-            <property name="topic" value="${dmall.mq.topic.rkt-vltava-req-test}"/>
-            <property name="group" value="${dmall.mq.group}"/>
+            <property name="topic" value="${testhuamou.mq.topic.rkt-vltava-req-test}"/>
+            <property name="group" value="${testhuamou.mq.group}"/>
             <property name="messageHandler" ref="rocketMessageHandler"/>
             <!-- 可以不填! 默认* -->
             <property name="tags" value="*"/>
             <!-- 可以不填! 默认如下 -->
-            <!-- 更多属性配置，请参考：WIKI：http://wiki.dmall.com:8090/pages/viewpage.action?pageId=18404458 -->
+            <!-- 更多属性配置，请参考：WIKI：http://wiki.testhuamou.com:8090/pages/viewpage.action?pageId=18404458 -->
             <property name="props">
                 <props>
                     <prop key="maxReconsumeTimes">5</prop> <!-- 重试消费次数，最大16 -->

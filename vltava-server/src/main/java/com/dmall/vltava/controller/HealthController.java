@@ -1,4 +1,4 @@
-package com.dmall.vltava.controller;
+package com.testhuamou.vltava.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

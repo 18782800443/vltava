@@ -1,6 +1,6 @@
-package com.dmall.vltava.domain.annotation;
+package com.testhuamou.vltava.domain.annotation;
 
-import com.dmall.vltava.domain.base.CommonResult;
+import com.testhuamou.vltava.domain.base.CommonResult;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

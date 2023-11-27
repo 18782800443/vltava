@@ -1,6 +1,6 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.base.AgentMsgVO;
+import com.testhuamou.vltava.domain.base.AgentMsgVO;
 
 /**
  * @author Rob

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <contextName>logback</contextName>
-    <define name="INSTANCE_CODE" class="com.dmall.amp.log.logback.InstanceCodePropertyDefiner"/>
-    <springProperty scope="context" name="dmcProjectCode" source="dmall.dmg.projectCode"/>
-    <springProperty scope="context" name="dmcAppCode" source="dmall.dmg.appCode"/>
-    <springProperty scope="context" name="logLevel" source="dmall.logback.level"/>
+    <define name="INSTANCE_CODE" class="com.testhuamou.amp.log.logback.InstanceCodePropertyDefiner"/>
+    <springProperty scope="context" name="dmcProjectCode" source="testhuamou.dmg.projectCode"/>
+    <springProperty scope="context" name="dmcAppCode" source="testhuamou.dmg.appCode"/>
+    <springProperty scope="context" name="logLevel" source="testhuamou.logback.level"/>
     <property name="logPath" value="/web/logs/app/${dmcProjectCode}/${dmcAppCode}/${INSTANCE_CODE}"/>
     <property name="logPattern" value="[%-5p] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%C] [%X{tid}] - %m%n"/>
     <property name="defaultPattern" value="%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n"/>
@@ -46,8 +46,8 @@
     <logger name="org.springframework" level="ERROR"/>
     <logger name="org.apache.zookeeper" level="ERROR"/>
     <logger name="org.mybatis.spring" level="ERROR"/>
-    <logger name="com.dmall.monitor" level="ERROR"/>
-    <logger name="com.dmall.vltava" level="${logLevel}" additivity="false">    <!-- 这里容易写错，请注意！ -->
+    <logger name="com.testhuamou.monitor" level="ERROR"/>
+    <logger name="com.testhuamou.vltava" level="${logLevel}" additivity="false">    <!-- 这里容易写错，请注意！ -->
         <appender-ref ref="FILE"/>
     </logger>
     <root level="info">

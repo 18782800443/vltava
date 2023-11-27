@@ -1,9 +1,9 @@
-package com.dmall.vltava.controller;
+package com.testhuamou.vltava.controller;
 
-import com.dmall.vltava.domain.base.CommonResult;
-import com.dmall.vltava.domain.git.GitVO;
-import com.dmall.vltava.domain.annotation.HandleException;
-import com.dmall.vltava.service.GitService;
+import com.testhuamou.vltava.domain.base.CommonResult;
+import com.testhuamou.vltava.domain.git.GitVO;
+import com.testhuamou.vltava.domain.annotation.HandleException;
+import com.testhuamou.vltava.service.GitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

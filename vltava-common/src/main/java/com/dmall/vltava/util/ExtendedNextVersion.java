@@ -1,4 +1,4 @@
-package com.dmall.vltava.util;
+package com.testhuamou.vltava.util;
 
 import tk.mybatis.mapper.version.NextVersion;
 import tk.mybatis.mapper.version.VersionException;

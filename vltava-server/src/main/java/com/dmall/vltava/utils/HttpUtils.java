@@ -1,9 +1,9 @@
-package com.dmall.vltava.utils;
+package com.testhuamou.vltava.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.dmall.vltava.domain.base.CommonException;
-import com.dmall.vltava.domain.mock.MockVO;
-import com.dmall.vltava.domain.mock.RegisterVO;
+import com.testhuamou.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.mock.MockVO;
+import com.testhuamou.vltava.domain.mock.RegisterVO;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

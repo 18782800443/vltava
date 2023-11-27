@@ -1,7 +1,7 @@
-package com.dmall.vltava.service.stategy;
+package com.testhuamou.vltava.service.stategy;
 
-import com.dmall.vltava.domain.base.AgentMsgVO;
-import com.dmall.vltava.domain.mock.RegisterVO;
+import com.testhuamou.vltava.domain.base.AgentMsgVO;
+import com.testhuamou.vltava.domain.mock.RegisterVO;
 
 /**
  * @author Rob

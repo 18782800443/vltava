@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>vltava</artifactId>
-        <groupId>com.dmall</groupId>
+        <groupId>com.testhuamou</groupId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.dmall</groupId>
+    <groupId>com.testhuamou</groupId>
     <artifactId>vltava-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -28,12 +28,12 @@
         </dependency>
 
         <dependency>
-            <groupId>com.dmall</groupId>
+            <groupId>com.testhuamou</groupId>
             <artifactId>vltava-domain</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.dmall</groupId>
+            <groupId>com.testhuamou</groupId>
             <artifactId>vltava-client</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
@@ -144,25 +144,25 @@
         <!--        多点配置中心-->
         <dependency>
             <artifactId>admiral-client-springboot</artifactId>
-            <groupId>com.dmall.admiral</groupId>
+            <groupId>com.testhuamou.admiral</groupId>
             <version>3.1.2</version>
         </dependency>
 
         <dependency>
-            <groupId>com.dmall.monitor</groupId>
+            <groupId>com.testhuamou.monitor</groupId>
             <artifactId>dmc-sdk</artifactId>
             <version>1.1.2-RELEASE</version>
         </dependency>
 
 
         <dependency>
-            <groupId>com.dmall.dmg</groupId>
+            <groupId>com.testhuamou.dmg</groupId>
             <artifactId>dmg-sdk4-rocketmq</artifactId>
             <version>4.4.2</version>
         </dependency>
 
         <dependency>
-            <groupId>com.dmall.dsf</groupId>
+            <groupId>com.testhuamou.dsf</groupId>
             <artifactId>dsf-sdk</artifactId>
             <version>2.8.4-RELEASE</version>
         </dependency>
@@ -193,13 +193,13 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <dependencies>
                     <dependency>
-                        <groupId>com.dmall</groupId>
+                        <groupId>com.testhuamou</groupId>
                         <artifactId>vltava-domain</artifactId>
                         <version>0.0.1-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <mainClass>com.dmall.vltava.VltavaApplication</mainClass>
+                    <mainClass>com.testhuamou.vltava.VltavaApplication</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

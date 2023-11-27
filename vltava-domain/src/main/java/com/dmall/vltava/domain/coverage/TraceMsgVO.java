@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.coverage;
+package com.testhuamou.vltava.domain.coverage;
 
 import java.util.Map;
 import java.util.Set;

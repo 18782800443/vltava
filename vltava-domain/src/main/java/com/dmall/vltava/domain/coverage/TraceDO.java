@@ -1,7 +1,7 @@
-package com.dmall.vltava.domain.coverage;
+package com.testhuamou.vltava.domain.coverage;
 
 
-import com.dmall.vltava.domain.base.AgentMsgVO;
+import com.testhuamou.vltava.domain.base.AgentMsgVO;
 
 import java.util.Date;
 

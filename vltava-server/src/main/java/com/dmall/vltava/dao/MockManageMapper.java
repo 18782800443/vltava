@@ -1,8 +1,8 @@
-package com.dmall.vltava.dao;
+package com.testhuamou.vltava.dao;
 
-import com.dmall.vltava.domain.DockerManage;
-import com.dmall.vltava.domain.mock.MockManage;
-import com.dmall.vltava.utils.MyMapper;
+import com.testhuamou.vltava.domain.DockerManage;
+import com.testhuamou.vltava.domain.mock.MockManage;
+import com.testhuamou.vltava.utils.MyMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

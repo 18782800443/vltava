@@ -1,6 +1,6 @@
-package com.dmall.vltava;
+package com.testhuamou.vltava;
 
-import com.dmall.admiral.client.springboot.AdmiralSpringbootConfigurationInitializer;
+import com.testhuamou.admiral.client.springboot.AdmiralSpringbootConfigurationInitializer;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableScheduling
 @SpringBootApplication
-@MapperScan("com.dmall.vltava.mapper")
-@EnableDubbo(scanBasePackages = {"com.dmall.vltava.service.remote"})
-@ImportResource(value = {"classpath:config/dmall-dafka.xml"})
+@MapperScan("com.testhuamou.vltava.mapper")
+@EnableDubbo(scanBasePackages = {"com.testhuamou.vltava.service.remote"})
+@ImportResource(value = {"classpath:config/testhuamou-dafka.xml"})
 @Import(AdmiralSpringbootConfigurationInitializer.class)
 public class VltavaApplication {
     public static void main(String[] args) {

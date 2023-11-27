@@ -34,15 +34,15 @@ pagehelper:
 
 mybatis:
   mapper-locations: classpath:mapping/*.xml
-  type-aliases-package: com.dmall.vltava.domain
+  type-aliases-package: com.testhuamou.vltava.domain
   configuration:
     map-underscore-to-camel-case: true
 mapper:
-  mappers: com.dmall.vltava.utils.MyMapper
+  mappers: com.testhuamou.vltava.utils.MyMapper
   not-empty: false
   identity: MYSQL
 
-dmall:
+testhuamou:
   dmc:
     projectCode: SupplyChainTool-RTA
     appCode: vlatava-tool
@@ -51,7 +51,7 @@ dmall:
     appName: supply-chain-tool-r-t-a-vlatava
     appKey: 6458F188373112895C75190298FEE915EFE45BC37EB7600499974B13A1F60A7C
     secretKey: 147748f18e0193bb70bb5d12
-    serverHttpAddress: meta.admiral.dmall.com
+    serverHttpAddress: meta.admiral.testhuamou.com
     env: test
   logback:
     level: debug

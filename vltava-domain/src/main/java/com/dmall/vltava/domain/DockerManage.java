@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain;
+package com.testhuamou.vltava.domain;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
 /**
  * @author Rob

@@ -1,6 +1,6 @@
-package com.dmall.vltava.service.template;
+package com.testhuamou.vltava.service.template;
 
-import com.dmall.vltava.domain.base.AgentMsgVO;
+import com.testhuamou.vltava.domain.base.AgentMsgVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

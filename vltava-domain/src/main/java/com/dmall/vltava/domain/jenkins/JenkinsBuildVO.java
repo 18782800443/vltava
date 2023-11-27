@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.jenkins;
+package com.testhuamou.vltava.domain.jenkins;
 
 import lombok.Data;
 

@@ -1,11 +1,11 @@
-package com.dmall.vltava.service.impl;
+package com.testhuamou.vltava.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.dmall.vltava.cache.CacheHandler;
-import com.dmall.vltava.domain.base.CommonException;
-import com.dmall.vltava.domain.git.*;
-import com.dmall.vltava.service.GitService;
+import com.testhuamou.vltava.cache.CacheHandler;
+import com.testhuamou.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.git.*;
+import com.testhuamou.vltava.service.GitService;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -28,7 +28,7 @@ public class GitServiceImpl implements GitService {
     private static final Logger logger = LoggerFactory.getLogger(GitServiceImpl.class);
 
     private final static String TOKEN = "RMe2fdSoqPvdkj_8KTtY";
-    private final static String BASE_URL = "http://gitlab.dmall.com/api/v4/";
+    private final static String BASE_URL = "http://gitlab.testhuamou.com/api/v4/";
     private final static String GIT_MAP_CACHE_KEY = "gitMap";
     private final static String HTML_TITLE = "<!DOCTYPE html>";
     private final static Pattern START_LINE_PATTERN = Pattern.compile("(?<=@@ -)\\d+(?<!,)");

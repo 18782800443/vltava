@@ -1,4 +1,4 @@
-package com.dmall.vltava.domain.git;
+package com.testhuamou.vltava.domain.git;
 
 import java.util.List;
 

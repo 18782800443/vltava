@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package com.dmall.vltava.utils;
+package com.testhuamou.vltava.utils;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;

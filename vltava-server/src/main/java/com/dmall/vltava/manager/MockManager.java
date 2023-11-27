@@ -1,15 +1,15 @@
-package com.dmall.vltava.manager;
+package com.testhuamou.vltava.manager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.dmall.vltava.dao.MockManageMapper;
-import com.dmall.vltava.domain.base.BaseFilter;
-import com.dmall.vltava.domain.base.CommonException;
-import com.dmall.vltava.domain.base.FilteredResult;
-import com.dmall.vltava.domain.enums.TaskStatusEnum;
-import com.dmall.vltava.domain.mock.MockActionVO;
-import com.dmall.vltava.domain.mock.MockManage;
-import com.dmall.vltava.domain.mock.MockVO;
+import com.testhuamou.vltava.dao.MockManageMapper;
+import com.testhuamou.vltava.domain.base.BaseFilter;
+import com.testhuamou.vltava.domain.base.CommonException;
+import com.testhuamou.vltava.domain.base.FilteredResult;
+import com.testhuamou.vltava.domain.enums.TaskStatusEnum;
+import com.testhuamou.vltava.domain.mock.MockActionVO;
+import com.testhuamou.vltava.domain.mock.MockManage;
+import com.testhuamou.vltava.domain.mock.MockVO;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;

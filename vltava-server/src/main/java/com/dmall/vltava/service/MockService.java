@@ -1,7 +1,7 @@
-package com.dmall.vltava.service;
+package com.testhuamou.vltava.service;
 
-import com.dmall.vltava.domain.base.*;
-import com.dmall.vltava.domain.mock.MockVO;
+import com.testhuamou.vltava.domain.base.*;
+import com.testhuamou.vltava.domain.mock.MockVO;
 
 /**
  * @author Rob

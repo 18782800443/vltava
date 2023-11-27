@@ -1,12 +1,12 @@
-//package com.dmall.vltava.service.stategy;
+//package com.testhuamou.vltava.service.stategy;
 //
 //import com.alibaba.fastjson.JSON;
-//import com.dmall.vltava.controller.WebSocketServer;
-//import com.dmall.vltava.domain.base.AgentMsgVO;
-//import com.dmall.vltava.domain.coverage.CoverageVO;
-//import com.dmall.vltava.domain.coverage.RateMsgVO;
-//import com.dmall.vltava.domain.enums.TaskStatusEnum;
-//import com.dmall.vltava.service.CoverageService;
+//import com.testhuamou.vltava.controller.WebSocketServer;
+//import com.testhuamou.vltava.domain.base.AgentMsgVO;
+//import com.testhuamou.vltava.domain.coverage.CoverageVO;
+//import com.testhuamou.vltava.domain.coverage.RateMsgVO;
+//import com.testhuamou.vltava.domain.enums.TaskStatusEnum;
+//import com.testhuamou.vltava.service.CoverageService;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 //import org.springframework.beans.factory.annotation.Autowired;
